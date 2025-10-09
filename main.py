@@ -2,7 +2,7 @@ import sys
 
 from loguru import logger as LOGGER
 
-from pyprogram_threshold import threshold
+from argmerge import threshold
 
 LOGGER.remove()
 
