@@ -1,0 +1,31 @@
+[project]
+name = "argmerge"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "duck-bongos", email = "billmannd@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "cython>=3.1.4",
+    "loguru>=0.7.3",
+    "pyyaml>=6.0.3",
+]
+
+[project.optional-dependencies]
+documentation = [
+    "mkdocs>=1.6.1",
+]
+
+[build-system]
+requires = ["hatchling", "hatch-cython"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.hooks.cython.options]
+src = "argmerge"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.30.1",
+]

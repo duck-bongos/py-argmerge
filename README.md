@@ -1,2 +1,3 @@
-# py-argmerge
-Merge arguments external to Python CLI programs
+# PyProgram Threshold
+Align variables external to the program and pass them "across the threshold"
+to the program.
