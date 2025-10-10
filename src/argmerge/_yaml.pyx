@@ -5,7 +5,12 @@ from pathlib import Path
 import yaml
 from loguru import logger as LOGGER
 
-cpdef tuple[dict, dict] parse_yaml(threshold_kwargs: dict[str, str], change_ledger: dict[str, dict[str, str | int]], fpath_yaml: str | Path, debug: bool = False):
+cpdef tuple[dict, dict] parse_yaml(
+    threshold_kwargs: dict[str, str],
+    change_ledger: dict[str, dict[str, str | int]], 
+    fpath_yaml: str | Path, 
+    debug: bool = False
+):
 
     cdef dict _yaml_kwargs
     cdef str _cli_input
