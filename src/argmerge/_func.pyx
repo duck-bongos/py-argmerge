@@ -25,13 +25,13 @@ cpdef tuple[dict, dict] parse_func(f: Callable, debug: bool = False):
 
     for k, v in _sig.parameters.items():
         if v.default is not Parameter.empty:
-            _default[k] = v
+            _default[k] = v.default
 
     LOGGER.debug(f"{_default=}")
     _change_ledger = {
-                    k: {"label": "Python Function default", "rank": 0}
-                    for k in _default.copy()
-                }
+        k: {"label": "Python Function default", "rank": 0}
+        for k in _default.copy()
+    }
     return _default, _change_ledger
 
 cpdef tuple[dict, dict] update_from_function(threshold_kwargs: dict[str, Any], change_ledger: dict[str, dict[str, str | int]], func_kwargs: dict[str, Any], debug: bool = False):

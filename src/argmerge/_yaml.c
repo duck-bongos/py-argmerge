@@ -1517,9 +1517,9 @@ struct __pyx_opt_args_8argmerge_5_yaml_parse_yaml;
 /* "argmerge/_yaml.pyx":8
  * from loguru import logger as LOGGER
  * 
- * cpdef tuple[dict, dict] parse_yaml(threshold_kwargs: dict[str, str], change_ledger: dict[str, dict[str, str | int]], fpath_yaml: str | Path, debug: bool = False):             # <<<<<<<<<<<<<<
- * 
- *     cdef dict _yaml_kwargs
+ * cpdef tuple[dict, dict] parse_yaml(             # <<<<<<<<<<<<<<
+ *     threshold_kwargs: dict[str, str],
+ *     change_ledger: dict[str, dict[str, str | int]],
 */
 struct __pyx_opt_args_8argmerge_5_yaml_parse_yaml {
   int __pyx_n;
@@ -2389,8 +2389,8 @@ static const char __pyx_k_threshold_kwargs_2[] = "threshold_kwargs";
 static const char __pyx_k_src_argmerge__yaml_pyx[] = "src/argmerge/_yaml.pyx";
 static const char __pyx_k_Updated_threshold_kwargs[] = "Updated threshold_kwargs=";
 static const char __pyx_k_dict_str_dict_str_str_int[] = "dict[str, dict[str, str | int]]";
-static const char __pyx_k_55T_U_B_B_U_U_q_gQ_d_3ivQ_4q_4q[] = "\320\0005\3205T\360\000\000U\001B\002\360\000\000B\002U\002\360\000\000U\002\\\002\360\000\000\\\002]\002\360\014\000\005\010\200q\330\010\016\210g\220Q\330\010\016\210d\220!\2203\220i\230v\240Q\340\004\n\210&\220\001\220\022\2204\220q\330\004\n\210&\220\001\220\022\2204\220q\340\004\022\220$\220a\220q\330\004\007\200{\220(\230(\240(\250!\330\010\016\210j\230\001\330\014\016\320\016&\240k\260\021\360\010\000\n\016\210Q\210l\230)\2401\330\010\027\220t\230:\240Q\240a\340\004\n\210&\220\001\220\022\2204\220q\330\004\024\220G\2301\230A\330\004\n\210&\220\001\220\022\220<\230q\340\004\010\210\007\210q\330\010\025\220Q\220h\230i\240r\250\032\260=\300\010\310\001\340\004\013\320\013\035\230Q";
 static const char __pyx_k_is_not_correct_Please_use_yml_o[] = "' is not correct. Please use '.yml' or '.yaml'.";
+static const char __pyx_k_q_gQ_d_3ivQ_4q_4q_aq_j_k_Ql_1_t[] = "\200\001\330\026\027\330\023\024\330\020\021\330\013\022\220!\360\016\000\005\010\200q\330\010\016\210g\220Q\330\010\016\210d\220!\2203\220i\230v\240Q\340\004\n\210&\220\001\220\022\2204\220q\330\004\n\210&\220\001\220\022\2204\220q\340\004\022\220$\220a\220q\330\004\007\200{\220(\230(\240(\250!\330\010\016\210j\230\001\330\014\016\320\016&\240k\260\021\360\010\000\n\016\210Q\210l\230)\2401\330\010\027\220t\230:\240Q\240a\340\004\n\210&\220\001\220\022\2204\220q\330\004\024\220G\2301\230A\330\004\n\210&\220\001\220\022\220<\230q\340\004\010\210\007\210q\330\010\025\220Q\220h\230i\240r\250\032\260=\300\010\310\001\340\004\013\320\013\035\230Q";
 static const char __pyx_k_Note_that_Cython_is_deliberately[] = "Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.";
 /* #### Code section: decls ### */
 static PyObject *__pyx_pf_8argmerge_5_yaml_parse_yaml(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_threshold_kwargs, PyObject *__pyx_v_change_ledger, PyObject *__pyx_v_fpath_yaml, PyObject *__pyx_v_debug); /* proto */
@@ -2592,9 +2592,9 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
 /* "argmerge/_yaml.pyx":8
  * from loguru import logger as LOGGER
  * 
- * cpdef tuple[dict, dict] parse_yaml(threshold_kwargs: dict[str, str], change_ledger: dict[str, dict[str, str | int]], fpath_yaml: str | Path, debug: bool = False):             # <<<<<<<<<<<<<<
- * 
- *     cdef dict _yaml_kwargs
+ * cpdef tuple[dict, dict] parse_yaml(             # <<<<<<<<<<<<<<
+ *     threshold_kwargs: dict[str, str],
+ *     change_ledger: dict[str, dict[str, str | int]],
 */
 
 static PyObject *__pyx_pw_8argmerge_5_yaml_1parse_yaml(PyObject *__pyx_self, 
@@ -2605,6 +2605,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
 static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold_kwargs, PyObject *__pyx_v_change_ledger, PyObject *__pyx_v_fpath_yaml, CYTHON_UNUSED int __pyx_skip_dispatch, struct __pyx_opt_args_8argmerge_5_yaml_parse_yaml *__pyx_optional_args) {
+
+  /* "argmerge/_yaml.pyx":12
+ *     change_ledger: dict[str, dict[str, str | int]],
+ *     fpath_yaml: str | Path,
+ *     debug: bool = False             # <<<<<<<<<<<<<<
+ * ):
+ * 
+*/
   PyObject *__pyx_v_debug = ((PyObject *)Py_False);
   PyObject *__pyx_v__yaml_kwargs = 0;
   PyObject *__pyx_v__fpath_yaml = NULL;
@@ -2640,17 +2648,17 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
     }
   }
 
-  /* "argmerge/_yaml.pyx":14
+  /* "argmerge/_yaml.pyx":19
  *     cdef list[tuple[str, str]] cli_matches
  * 
  *     if debug:             # <<<<<<<<<<<<<<
  *         LOGGER.remove()
  *         LOGGER.add(sys.stderr, level="DEBUG")
 */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_debug); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_debug); if (unlikely((__pyx_t_1 < 0))) __PYX_ERR(0, 19, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "argmerge/_yaml.pyx":15
+    /* "argmerge/_yaml.pyx":20
  * 
  *     if debug:
  *         LOGGER.remove()             # <<<<<<<<<<<<<<
@@ -2658,9 +2666,9 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
  * 
 */
     __pyx_t_3 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_LOGGER); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_LOGGER); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_remove); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 15, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_remove); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 20, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_6 = 1;
@@ -2680,12 +2688,12 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_5, __pyx_callargs+__pyx_t_6, (1-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "argmerge/_yaml.pyx":16
+    /* "argmerge/_yaml.pyx":21
  *     if debug:
  *         LOGGER.remove()
  *         LOGGER.add(sys.stderr, level="DEBUG")             # <<<<<<<<<<<<<<
@@ -2693,14 +2701,14 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
  *     LOGGER.debug(f"{threshold_kwargs=}")
 */
     __pyx_t_5 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_LOGGER); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_LOGGER); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_add); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_add); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_sys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_sys); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_stderr); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 16, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_stderr); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_6 = 1;
@@ -2717,20 +2725,20 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
     #endif
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_5, __pyx_t_7};
-      __pyx_t_3 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 16, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_level, __pyx_mstate_global->__pyx_n_u_DEBUG, __pyx_t_3, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_level, __pyx_mstate_global->__pyx_n_u_DEBUG, __pyx_t_3, __pyx_callargs+2, 0) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
       __pyx_t_2 = __Pyx_Object_Vectorcall_CallFromBuilder(__pyx_t_4, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_3);
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "argmerge/_yaml.pyx":14
+    /* "argmerge/_yaml.pyx":19
  *     cdef list[tuple[str, str]] cli_matches
  * 
  *     if debug:             # <<<<<<<<<<<<<<
@@ -2739,7 +2747,7 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
 */
   }
 
-  /* "argmerge/_yaml.pyx":18
+  /* "argmerge/_yaml.pyx":23
  *         LOGGER.add(sys.stderr, level="DEBUG")
  * 
  *     LOGGER.debug(f"{threshold_kwargs=}")             # <<<<<<<<<<<<<<
@@ -2747,14 +2755,14 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
  * 
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_LOGGER); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_LOGGER); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_debug); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_debug); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(__pyx_v_threshold_kwargs), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(__pyx_v_threshold_kwargs), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_threshold_kwargs, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_threshold_kwargs, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_6 = 1;
@@ -2775,12 +2783,12 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "argmerge/_yaml.pyx":19
+  /* "argmerge/_yaml.pyx":24
  * 
  *     LOGGER.debug(f"{threshold_kwargs=}")
  *     LOGGER.debug(f"{fpath_yaml=}")             # <<<<<<<<<<<<<<
@@ -2788,14 +2796,14 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
  *     _fpath_yaml = Path(fpath_yaml)
 */
   __pyx_t_7 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_LOGGER); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_LOGGER); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_debug); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_debug); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(__pyx_v_fpath_yaml), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(__pyx_v_fpath_yaml), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_fpath_yaml, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_fpath_yaml, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_6 = 1;
@@ -2816,12 +2824,12 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 19, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "argmerge/_yaml.pyx":21
+  /* "argmerge/_yaml.pyx":26
  *     LOGGER.debug(f"{fpath_yaml=}")
  * 
  *     _fpath_yaml = Path(fpath_yaml)             # <<<<<<<<<<<<<<
@@ -2829,7 +2837,7 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
  *         raise ValueError(
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_Path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_Path); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 26, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_6 = 1;
   #if CYTHON_UNPACK_METHODS
@@ -2848,35 +2856,35 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
     __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 26, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __pyx_v__fpath_yaml = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "argmerge/_yaml.pyx":22
+  /* "argmerge/_yaml.pyx":27
  * 
  *     _fpath_yaml = Path(fpath_yaml)
  *     if _fpath_yaml.suffix not in (".yml", ".yaml"):             # <<<<<<<<<<<<<<
  *         raise ValueError(
  *             f"The YAML suffix of '{_fpath_yaml.suffix}' is not correct."
 */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v__fpath_yaml, __pyx_mstate_global->__pyx_n_u_suffix); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v__fpath_yaml, __pyx_mstate_global->__pyx_n_u_suffix); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 27, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_mstate_global->__pyx_kp_u_yml, Py_NE)); if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_mstate_global->__pyx_kp_u_yml, Py_NE)); if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 27, __pyx_L1_error)
   if (__pyx_t_8) {
   } else {
     __pyx_t_1 = __pyx_t_8;
     goto __pyx_L5_bool_binop_done;
   }
-  __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_mstate_global->__pyx_kp_u_yaml, Py_NE)); if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_t_2, __pyx_mstate_global->__pyx_kp_u_yaml, Py_NE)); if (unlikely((__pyx_t_8 < 0))) __PYX_ERR(0, 27, __pyx_L1_error)
   __pyx_t_1 = __pyx_t_8;
   __pyx_L5_bool_binop_done:;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_8 = __pyx_t_1;
   if (unlikely(__pyx_t_8)) {
 
-    /* "argmerge/_yaml.pyx":23
+    /* "argmerge/_yaml.pyx":28
  *     _fpath_yaml = Path(fpath_yaml)
  *     if _fpath_yaml.suffix not in (".yml", ".yaml"):
  *         raise ValueError(             # <<<<<<<<<<<<<<
@@ -2887,23 +2895,23 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
     __Pyx_INCREF(__pyx_builtin_ValueError);
     __pyx_t_4 = __pyx_builtin_ValueError; 
 
-    /* "argmerge/_yaml.pyx":24
+    /* "argmerge/_yaml.pyx":29
  *     if _fpath_yaml.suffix not in (".yml", ".yaml"):
  *         raise ValueError(
  *             f"The YAML suffix of '{_fpath_yaml.suffix}' is not correct."             # <<<<<<<<<<<<<<
  *             " Please use '.yml' or '.yaml'."
  *         )
 */
-    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v__fpath_yaml, __pyx_mstate_global->__pyx_n_u_suffix); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v__fpath_yaml, __pyx_mstate_global->__pyx_n_u_suffix); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_FormatSimple(__pyx_t_7, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_t_9[0] = __pyx_mstate_global->__pyx_kp_u_The_YAML_suffix_of;
     __pyx_t_9[1] = __pyx_t_5;
     __pyx_t_9[2] = __pyx_mstate_global->__pyx_kp_u_is_not_correct_Please_use_yml_o;
     __pyx_t_7 = __Pyx_PyUnicode_Join(__pyx_t_9, 3, 20 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_5) + 47, 127 | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_5));
-    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 24, __pyx_L1_error)
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_6 = 1;
@@ -2913,14 +2921,14 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 23, __pyx_L1_error)
+    __PYX_ERR(0, 28, __pyx_L1_error)
 
-    /* "argmerge/_yaml.pyx":22
+    /* "argmerge/_yaml.pyx":27
  * 
  *     _fpath_yaml = Path(fpath_yaml)
  *     if _fpath_yaml.suffix not in (".yml", ".yaml"):             # <<<<<<<<<<<<<<
@@ -2929,7 +2937,7 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
 */
   }
 
-  /* "argmerge/_yaml.pyx":28
+  /* "argmerge/_yaml.pyx":33
  *         )
  * 
  *     with open(fpath_yaml, 'rb') as fy:             # <<<<<<<<<<<<<<
@@ -2946,13 +2954,13 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
       __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_7, __pyx_callargs+__pyx_t_6, (3-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 28, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
-    __pyx_t_10 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_exit); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_exit); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 33, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_4 = NULL;
-    __pyx_t_3 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_enter); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L7_error)
+    __pyx_t_3 = __Pyx_PyObject_LookupSpecial(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_enter); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L7_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_6 = 1;
     #if CYTHON_UNPACK_METHODS
@@ -2971,7 +2979,7 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
       __pyx_t_7 = __Pyx_PyObject_FastCall(__pyx_t_3, __pyx_callargs+__pyx_t_6, (1-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 28, __pyx_L7_error)
+      if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 33, __pyx_L7_error)
       __Pyx_GOTREF(__pyx_t_7);
     }
     __pyx_t_3 = __pyx_t_7;
@@ -2989,7 +2997,7 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
           __pyx_v_fy = __pyx_t_3;
           __pyx_t_3 = 0;
 
-          /* "argmerge/_yaml.pyx":29
+          /* "argmerge/_yaml.pyx":34
  * 
  *     with open(fpath_yaml, 'rb') as fy:
  *         _yaml_kwargs = yaml.safe_load(fy)             # <<<<<<<<<<<<<<
@@ -2997,9 +3005,9 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
  *     LOGGER.debug(f"{_yaml_kwargs=}")
 */
           __pyx_t_2 = NULL;
-          __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_yaml_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 29, __pyx_L11_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_yaml_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 34, __pyx_L11_error)
           __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_safe_load); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L11_error)
+          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_mstate_global->__pyx_n_u_safe_load); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 34, __pyx_L11_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __pyx_t_6 = 1;
@@ -3019,14 +3027,14 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
             __pyx_t_3 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
             __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-            if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L11_error)
+            if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 34, __pyx_L11_error)
             __Pyx_GOTREF(__pyx_t_3);
           }
-          if (!(likely(PyDict_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None) || __Pyx_RaiseUnexpectedTypeError("dict", __pyx_t_3))) __PYX_ERR(0, 29, __pyx_L11_error)
+          if (!(likely(PyDict_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None) || __Pyx_RaiseUnexpectedTypeError("dict", __pyx_t_3))) __PYX_ERR(0, 34, __pyx_L11_error)
           __pyx_v__yaml_kwargs = ((PyObject*)__pyx_t_3);
           __pyx_t_3 = 0;
 
-          /* "argmerge/_yaml.pyx":28
+          /* "argmerge/_yaml.pyx":33
  *         )
  * 
  *     with open(fpath_yaml, 'rb') as fy:             # <<<<<<<<<<<<<<
@@ -3046,20 +3054,20 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         /*except:*/ {
           __Pyx_AddTraceback("argmerge._yaml.parse_yaml", __pyx_clineno, __pyx_lineno, __pyx_filename);
-          if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_4, &__pyx_t_2) < 0) __PYX_ERR(0, 28, __pyx_L13_except_error)
+          if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_4, &__pyx_t_2) < 0) __PYX_ERR(0, 33, __pyx_L13_except_error)
           __Pyx_XGOTREF(__pyx_t_3);
           __Pyx_XGOTREF(__pyx_t_4);
           __Pyx_XGOTREF(__pyx_t_2);
-          __pyx_t_7 = PyTuple_Pack(3, __pyx_t_3, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 28, __pyx_L13_except_error)
+          __pyx_t_7 = PyTuple_Pack(3, __pyx_t_3, __pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 33, __pyx_L13_except_error)
           __Pyx_GOTREF(__pyx_t_7);
           __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_t_7, NULL);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 28, __pyx_L13_except_error)
+          if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 33, __pyx_L13_except_error)
           __Pyx_GOTREF(__pyx_t_14);
           __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          if (__pyx_t_8 < 0) __PYX_ERR(0, 28, __pyx_L13_except_error)
+          if (__pyx_t_8 < 0) __PYX_ERR(0, 33, __pyx_L13_except_error)
           __pyx_t_1 = (!__pyx_t_8);
           if (unlikely(__pyx_t_1)) {
             __Pyx_GIVEREF(__pyx_t_3);
@@ -3067,7 +3075,7 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
             __Pyx_XGIVEREF(__pyx_t_2);
             __Pyx_ErrRestoreWithState(__pyx_t_3, __pyx_t_4, __pyx_t_2);
             __pyx_t_3 = 0;  __pyx_t_4 = 0;  __pyx_t_2 = 0; 
-            __PYX_ERR(0, 28, __pyx_L13_except_error)
+            __PYX_ERR(0, 33, __pyx_L13_except_error)
           }
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3093,7 +3101,7 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
         if (__pyx_t_10) {
           __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_10, __pyx_mstate_global->__pyx_tuple[0], NULL);
           __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 28, __pyx_L1_error)
+          if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 33, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_13);
           __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
         }
@@ -3108,7 +3116,7 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
     __pyx_L20:;
   }
 
-  /* "argmerge/_yaml.pyx":31
+  /* "argmerge/_yaml.pyx":36
  *         _yaml_kwargs = yaml.safe_load(fy)
  * 
  *     LOGGER.debug(f"{_yaml_kwargs=}")             # <<<<<<<<<<<<<<
@@ -3116,15 +3124,15 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
  *     LOGGER.debug(f"Updated {threshold_kwargs=}")
 */
   __pyx_t_4 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_LOGGER); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_LOGGER); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_debug); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_debug); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_v__yaml_kwargs)) { __Pyx_RaiseUnboundLocalError("_yaml_kwargs"); __PYX_ERR(0, 31, __pyx_L1_error) }
-  __pyx_t_3 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(__pyx_v__yaml_kwargs), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (unlikely(!__pyx_v__yaml_kwargs)) { __Pyx_RaiseUnboundLocalError("_yaml_kwargs"); __PYX_ERR(0, 36, __pyx_L1_error) }
+  __pyx_t_3 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(__pyx_v__yaml_kwargs), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_yaml_kwargs, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_yaml_kwargs, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 36, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_6 = 1;
@@ -3145,24 +3153,24 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 36, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "argmerge/_yaml.pyx":32
+  /* "argmerge/_yaml.pyx":37
  * 
  *     LOGGER.debug(f"{_yaml_kwargs=}")
  *     threshold_kwargs.update(_yaml_kwargs)             # <<<<<<<<<<<<<<
  *     LOGGER.debug(f"Updated {threshold_kwargs=}")
  * 
 */
-  if (unlikely(!__pyx_v__yaml_kwargs)) { __Pyx_RaiseUnboundLocalError("_yaml_kwargs"); __PYX_ERR(0, 32, __pyx_L1_error) }
-  __pyx_t_2 = __Pyx_CallUnboundCMethod1(&__pyx_mstate_global->__pyx_umethod_PyDict_Type__update, __pyx_v_threshold_kwargs, __pyx_v__yaml_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__pyx_v__yaml_kwargs)) { __Pyx_RaiseUnboundLocalError("_yaml_kwargs"); __PYX_ERR(0, 37, __pyx_L1_error) }
+  __pyx_t_2 = __Pyx_CallUnboundCMethod1(&__pyx_mstate_global->__pyx_umethod_PyDict_Type__update, __pyx_v_threshold_kwargs, __pyx_v__yaml_kwargs); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "argmerge/_yaml.pyx":33
+  /* "argmerge/_yaml.pyx":38
  *     LOGGER.debug(f"{_yaml_kwargs=}")
  *     threshold_kwargs.update(_yaml_kwargs)
  *     LOGGER.debug(f"Updated {threshold_kwargs=}")             # <<<<<<<<<<<<<<
@@ -3170,14 +3178,14 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
  *     for key in _yaml_kwargs:
 */
   __pyx_t_7 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_LOGGER); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_LOGGER); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_debug); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_debug); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(__pyx_v_threshold_kwargs), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_FormatSimpleAndDecref(PyObject_Repr(__pyx_v_threshold_kwargs), __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Updated_threshold_kwargs, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyUnicode_Concat(__pyx_mstate_global->__pyx_kp_u_Updated_threshold_kwargs, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 38, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_6 = 1;
@@ -3198,12 +3206,12 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "argmerge/_yaml.pyx":35
+  /* "argmerge/_yaml.pyx":40
  *     LOGGER.debug(f"Updated {threshold_kwargs=}")
  * 
  *     for key in _yaml_kwargs:             # <<<<<<<<<<<<<<
@@ -3211,12 +3219,12 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
  * 
 */
   __pyx_t_15 = 0;
-  if (unlikely(!__pyx_v__yaml_kwargs)) { __Pyx_RaiseUnboundLocalError("_yaml_kwargs"); __PYX_ERR(0, 35, __pyx_L1_error) }
+  if (unlikely(!__pyx_v__yaml_kwargs)) { __Pyx_RaiseUnboundLocalError("_yaml_kwargs"); __PYX_ERR(0, 40, __pyx_L1_error) }
   if (unlikely(__pyx_v__yaml_kwargs == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 35, __pyx_L1_error)
+    __PYX_ERR(0, 40, __pyx_L1_error)
   }
-  __pyx_t_4 = __Pyx_dict_iterator(__pyx_v__yaml_kwargs, 1, ((PyObject *)NULL), (&__pyx_t_16), (&__pyx_t_17)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 35, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_dict_iterator(__pyx_v__yaml_kwargs, 1, ((PyObject *)NULL), (&__pyx_t_16), (&__pyx_t_17)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_2);
   __pyx_t_2 = __pyx_t_4;
@@ -3224,38 +3232,38 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
   while (1) {
     __pyx_t_18 = __Pyx_dict_iter_next(__pyx_t_2, __pyx_t_16, &__pyx_t_15, &__pyx_t_4, NULL, NULL, __pyx_t_17);
     if (unlikely(__pyx_t_18 == 0)) break;
-    if (unlikely(__pyx_t_18 == -1)) __PYX_ERR(0, 35, __pyx_L1_error)
+    if (unlikely(__pyx_t_18 == -1)) __PYX_ERR(0, 40, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_XDECREF_SET(__pyx_v_key, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "argmerge/_yaml.pyx":36
+    /* "argmerge/_yaml.pyx":41
  * 
  *     for key in _yaml_kwargs:
  *         change_ledger[key] = {"label": f"YAML ({_fpath_yaml})", "rank": 20}             # <<<<<<<<<<<<<<
  * 
  *     return threshold_kwargs, change_ledger
 */
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 41, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v__fpath_yaml, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_FormatSimple(__pyx_v__fpath_yaml, __pyx_mstate_global->__pyx_empty_unicode); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 41, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_9[0] = __pyx_mstate_global->__pyx_kp_u_YAML;
     __pyx_t_9[1] = __pyx_t_3;
     __pyx_t_9[2] = __pyx_mstate_global->__pyx_kp_u_;
     __pyx_t_7 = __Pyx_PyUnicode_Join(__pyx_t_9, 3, 6 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3) + 1, 127 | __Pyx_PyUnicode_MAX_CHAR_VALUE(__pyx_t_3));
-    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 36, __pyx_L1_error)
+    if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 41, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_label, __pyx_t_7) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_label, __pyx_t_7) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_rank, __pyx_mstate_global->__pyx_int_20) < 0) __PYX_ERR(0, 36, __pyx_L1_error)
-    if (unlikely((PyDict_SetItem(__pyx_v_change_ledger, __pyx_v_key, __pyx_t_4) < 0))) __PYX_ERR(0, 36, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_rank, __pyx_mstate_global->__pyx_int_20) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
+    if (unlikely((PyDict_SetItem(__pyx_v_change_ledger, __pyx_v_key, __pyx_t_4) < 0))) __PYX_ERR(0, 41, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "argmerge/_yaml.pyx":38
+  /* "argmerge/_yaml.pyx":43
  *         change_ledger[key] = {"label": f"YAML ({_fpath_yaml})", "rank": 20}
  * 
  *     return threshold_kwargs, change_ledger             # <<<<<<<<<<<<<<
@@ -3263,14 +3271,14 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
  * 
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_v_threshold_kwargs);
   __Pyx_GIVEREF(__pyx_v_threshold_kwargs);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_threshold_kwargs) != (0)) __PYX_ERR(0, 38, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_threshold_kwargs) != (0)) __PYX_ERR(0, 43, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_change_ledger);
   __Pyx_GIVEREF(__pyx_v_change_ledger);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_change_ledger) != (0)) __PYX_ERR(0, 38, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_v_change_ledger) != (0)) __PYX_ERR(0, 43, __pyx_L1_error);
   __pyx_r = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
   goto __pyx_L0;
@@ -3278,9 +3286,9 @@ static PyObject *__pyx_f_8argmerge_5_yaml_parse_yaml(PyObject *__pyx_v_threshold
   /* "argmerge/_yaml.pyx":8
  * from loguru import logger as LOGGER
  * 
- * cpdef tuple[dict, dict] parse_yaml(threshold_kwargs: dict[str, str], change_ledger: dict[str, dict[str, str | int]], fpath_yaml: str | Path, debug: bool = False):             # <<<<<<<<<<<<<<
- * 
- *     cdef dict _yaml_kwargs
+ * cpdef tuple[dict, dict] parse_yaml(             # <<<<<<<<<<<<<<
+ *     threshold_kwargs: dict[str, str],
+ *     change_ledger: dict[str, dict[str, str | int]],
 */
 
   /* function exit code */
@@ -3368,6 +3376,14 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
       if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "parse_yaml", 0) < 0) __PYX_ERR(0, 8, __pyx_L3_error)
+
+      /* "argmerge/_yaml.pyx":12
+ *     change_ledger: dict[str, dict[str, str | int]],
+ *     fpath_yaml: str | Path,
+ *     debug: bool = False             # <<<<<<<<<<<<<<
+ * ):
+ * 
+*/
       if (!values[3]) values[3] = __Pyx_NewRef(((PyObject *)Py_False));
       for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
         if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("parse_yaml", 0, 3, 4, i); __PYX_ERR(0, 8, __pyx_L3_error) }
@@ -3408,9 +3424,17 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_threshold_kwargs), (&PyDict_Type), 0, "threshold_kwargs", 2))) __PYX_ERR(0, 8, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_change_ledger), (&PyDict_Type), 0, "change_ledger", 2))) __PYX_ERR(0, 8, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_threshold_kwargs), (&PyDict_Type), 0, "threshold_kwargs", 2))) __PYX_ERR(0, 9, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_change_ledger), (&PyDict_Type), 0, "change_ledger", 2))) __PYX_ERR(0, 10, __pyx_L1_error)
   __pyx_r = __pyx_pf_8argmerge_5_yaml_parse_yaml(__pyx_self, __pyx_v_threshold_kwargs, __pyx_v_change_ledger, __pyx_v_fpath_yaml, __pyx_v_debug);
+
+  /* "argmerge/_yaml.pyx":8
+ * from loguru import logger as LOGGER
+ * 
+ * cpdef tuple[dict, dict] parse_yaml(             # <<<<<<<<<<<<<<
+ *     threshold_kwargs: dict[str, str],
+ *     change_ledger: dict[str, dict[str, str | int]],
+*/
 
   /* function exit code */
   goto __pyx_L0;
@@ -3887,7 +3911,7 @@ __Pyx_RefNannySetupContext("PyInit__yaml", 0);
  * import yaml
  * from loguru import logger as LOGGER             # <<<<<<<<<<<<<<
  * 
- * cpdef tuple[dict, dict] parse_yaml(threshold_kwargs: dict[str, str], change_ledger: dict[str, dict[str, str | int]], fpath_yaml: str | Path, debug: bool = False):
+ * cpdef tuple[dict, dict] parse_yaml(
 */
   __pyx_t_3 = __Pyx_PyList_Pack(1, __pyx_mstate_global->__pyx_n_u_logger); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
@@ -3903,9 +3927,9 @@ __Pyx_RefNannySetupContext("PyInit__yaml", 0);
   /* "argmerge/_yaml.pyx":8
  * from loguru import logger as LOGGER
  * 
- * cpdef tuple[dict, dict] parse_yaml(threshold_kwargs: dict[str, str], change_ledger: dict[str, dict[str, str | int]], fpath_yaml: str | Path, debug: bool = False):             # <<<<<<<<<<<<<<
- * 
- *     cdef dict _yaml_kwargs
+ * cpdef tuple[dict, dict] parse_yaml(             # <<<<<<<<<<<<<<
+ *     threshold_kwargs: dict[str, str],
+ *     change_ledger: dict[str, dict[str, str | int]],
 */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -4060,8 +4084,8 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry const *t, PyObject **target, c
 
 static int __Pyx_InitCachedBuiltins(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 23, __pyx_L1_error)
-  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_open); if (!__pyx_builtin_open) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_builtin_open = __Pyx_GetBuiltinName(__pyx_mstate->__pyx_n_u_open); if (!__pyx_builtin_open) __PYX_ERR(0, 33, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -4073,23 +4097,23 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "argmerge/_yaml.pyx":28
+  /* "argmerge/_yaml.pyx":33
  *         )
  * 
  *     with open(fpath_yaml, 'rb') as fy:             # <<<<<<<<<<<<<<
  *         _yaml_kwargs = yaml.safe_load(fy)
  * 
 */
-  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 28, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(3, Py_None, Py_None, Py_None); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 33, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[0]);
 
   /* "argmerge/_yaml.pyx":8
  * from loguru import logger as LOGGER
  * 
- * cpdef tuple[dict, dict] parse_yaml(threshold_kwargs: dict[str, str], change_ledger: dict[str, dict[str, str | int]], fpath_yaml: str | Path, debug: bool = False):             # <<<<<<<<<<<<<<
- * 
- *     cdef dict _yaml_kwargs
+ * cpdef tuple[dict, dict] parse_yaml(             # <<<<<<<<<<<<<<
+ *     threshold_kwargs: dict[str, str],
+ *     change_ledger: dict[str, dict[str, str | int]],
 */
   __pyx_mstate_global->__pyx_tuple[1] = PyTuple_Pack(1, Py_False); if (unlikely(!__pyx_mstate_global->__pyx_tuple[1])) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
@@ -4140,9 +4164,9 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 8, 221};
+    const __Pyx_PyCode_New_function_description descr = {4, 0, 0, 4, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 8, 203};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_threshold_kwargs_2, __pyx_mstate->__pyx_n_u_change_ledger, __pyx_mstate->__pyx_n_u_fpath_yaml_2, __pyx_mstate->__pyx_n_u_debug};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_argmerge__yaml_pyx, __pyx_mstate->__pyx_n_u_parse_yaml, __pyx_k_55T_U_B_B_U_U_q_gQ_d_3ivQ_4q_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_src_argmerge__yaml_pyx, __pyx_mstate->__pyx_n_u_parse_yaml, __pyx_k_q_gQ_d_3ivQ_4q_4q_aq_j_k_Ql_1_t, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
