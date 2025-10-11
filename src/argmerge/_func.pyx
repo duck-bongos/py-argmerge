@@ -1,10 +1,17 @@
-import os
+"""Module to work with functions"""
 import sys
 from inspect import signature, Parameter
 from typing import Any, Callable
 from loguru import logger as LOGGER
 
-cpdef dict parse_func(f: Callable, debug: bool = False):
+cpdef tuple[dict, dict] parse_func(f: Callable, debug: bool = False):
+    """Lowest level parser - retrieve function defaults as fallback arguments.
+    
+    Args:
+        f (callable):
+        debug (bool):
+        
+    """
     cdef dict _default
 
     if debug:
@@ -21,7 +28,11 @@ cpdef dict parse_func(f: Callable, debug: bool = False):
             _default[k] = v
 
     LOGGER.debug(f"{_default=}")
-    return _default
+    _change_ledger = {
+                    k: {"label": "Python Function default", "rank": 0}
+                    for k in _default.copy()
+                }
+    return _default, _change_ledger
 
 cpdef tuple[dict, dict] update_from_function(threshold_kwargs: dict[str, Any], change_ledger: dict[str, dict[str, str | int]], func_kwargs: dict[str, Any], debug: bool = False):
     if debug:

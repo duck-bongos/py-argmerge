@@ -30,11 +30,7 @@ def threshold(
         def wrapped(f):
             @functools.wraps(f)
             def wrapped_f(*_args, **_kwargs):
-                _threshold_kwargs = parse_func(f, debug=debug)
-                _change_ledger = {
-                    k: {"label": "Python Function default", "rank": 0}
-                    for k in _threshold_kwargs.copy()
-                }
+                _threshold_kwargs, _change_ledger = parse_func(f, debug=debug)
 
                 if Path(fpath_json).suffix == ".json":
                     _threshold_kwargs, _change_ledger = parse_json(

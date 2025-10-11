@@ -11,13 +11,15 @@ cpdef _write_trace(message: str, level: str):
     _level = level.lower()
     if _level not in LOG_LEVELS:
         raise ValueError(f"Log level '{_level}' not in basic loguru log levels: '{LOG_LEVELS}''.")
-    LOGGER.add(sys.stderr, level=level)
+    _trace_logger: int = LOGGER.add(sys.stderr, level=level)
 
     if isinstance(level, str):
         if level.lower() :
             getattr(LOGGER, level.lower())(message)
     else:
         LOGGER.debug(message)
+
+    LOGGER.remove(_trace_logger)
 
 
 cpdef _sort_key(item):
