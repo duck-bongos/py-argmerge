@@ -55,13 +55,6 @@ def test_parse_func(function, debug, expected_kwargs, expected_ledger, context):
         assert expected_ledger == _expected_ledger
 
 
-# if not a callable is passed
-# if no parameters with defaults are passed
-# if mix of default/not default params are passed
-# if all functions have defaults
-# if developer provides a keyword not present - Fail
-
-
 # [update_from_function]
 @pytest.mark.parametrize(
     "threshold_kwargs,change_ledger,func_kwargs,debug,expected_kwargs,expected_ledger,context,",

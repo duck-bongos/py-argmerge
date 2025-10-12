@@ -1,4 +1,6 @@
-import os
+# cython: linetrace=True
+# distutils: define_macros=CYTHON_TRACE=1
+
 import sys
 from pathlib import Path
 
