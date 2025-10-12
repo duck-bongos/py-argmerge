@@ -1,15 +1,22 @@
-import sys
+# cython: linetrace=True
+# distutils: define_macros=CYTHON_TRACE=1
 import re
+import sys
 from typing import Any
 
 from loguru import logger as LOGGER
 
 CLI_PATTERN: re.Pattern = re.compile(r"--([A-Za-z\_\-]+)\=([0-9A-Za-z\_\-]+)")
 
-cpdef tuple[dict, dict] parse_cli(threshold_kwargs: dict[str, Any], change_ledger: dict[str, dict[str, str | int]], cli_pattern: re.Pattern[str] = CLI_PATTERN, debug: bool = False):
-    cdef dict _cli_kwargs
-    cdef str _cli_input
-    cdef list[tuple[str, str]] cli_matches
+
+def parse_cli(
+    threshold_kwargs: dict[str, Any],
+    change_ledger: dict[str, dict[str, str | int]],
+    cli_pattern: re.Pattern[str] = CLI_PATTERN,
+    debug: bool = False,
+) -> tuple[dict, dict]:
+    _cli_kwargs: dict
+    _cli_input: str
 
     if debug:
         LOGGER.remove()
@@ -20,7 +27,7 @@ cpdef tuple[dict, dict] parse_cli(threshold_kwargs: dict[str, Any], change_ledge
 
     else:
         _cli_pattern = re.compile(rf"{cli_pattern}")
-    
+
     LOGGER.debug(f"{cli_pattern=}")
     LOGGER.debug(f"{_cli_pattern=}")
     LOGGER.debug(f"{sys.argv=}")

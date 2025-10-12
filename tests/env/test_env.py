@@ -1,8 +1,8 @@
 """Unit tests for the argmerge._func::{parse_func, update_from_function} functions."""
 
 import pytest
-from argmerge._env import ENV_PREFIX, parse_env
 
+from argmerge.env import ENV_PREFIX, parse_env
 from tests.utils import no_error
 
 # string pattern

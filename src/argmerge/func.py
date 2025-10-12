@@ -1,23 +1,27 @@
 """Module to work with functions"""
+
+# cython: linetrace=True
 import sys
-from inspect import signature, Parameter
+from inspect import Parameter, signature
 from typing import Any, Callable
+
 from loguru import logger as LOGGER
 
-cpdef tuple[dict, dict] parse_func(f: Callable, debug: bool = False):
+
+def parse_func(f: Callable, debug: bool = False) -> tuple[dict, dict]:
     """Lowest level parser - retrieve function defaults as fallback arguments.
-    
+
     Args:
         f (callable):
         debug (bool):
-        
+
     """
-    cdef dict _default
+    _default: dict
 
     if debug:
         LOGGER.remove()
         LOGGER.add(sys.stderr, level="DEBUG")
-        
+
     _sig = signature(f)
     LOGGER.debug(f"Function {signature=}")
 
@@ -29,12 +33,17 @@ cpdef tuple[dict, dict] parse_func(f: Callable, debug: bool = False):
 
     LOGGER.debug(f"{_default=}")
     _change_ledger = {
-        k: {"label": "Python Function default", "rank": 0}
-        for k in _default.copy()
+        k: {"label": "Python Function default", "rank": 0} for k in _default.copy()
     }
     return _default, _change_ledger
 
-cpdef tuple[dict, dict] update_from_function(threshold_kwargs: dict[str, Any], change_ledger: dict[str, dict[str, str | int]], func_kwargs: dict[str, Any], debug: bool = False):
+
+def update_from_function(
+    threshold_kwargs: dict[str, Any],
+    change_ledger: dict[str, dict[str, str | int]],
+    func_kwargs: dict[str, Any],
+    debug: bool = False,
+) -> tuple[dict, dict]:
     if debug:
         LOGGER.remove()
         LOGGER.add(sys.stderr, level="DEBUG")

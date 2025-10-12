@@ -1,18 +1,24 @@
+# cython: linetrace=True
+# distutils: define_macros=CYTHON_TRACE=1
 import os
-import sys
 import re
+import sys
 from typing import Any
 
 from loguru import logger as LOGGER
 
-from argmerge._utils import extract_literals
+from argmerge.utils import extract_literals
 
 ENV_PREFIX = os.environ.get("PYTHRESH", "THRESH")
 
 
-cpdef tuple[dict, dict] parse_env(threshold_kwargs: dict[str, Any], change_ledger: dict[str, dict[str, str | int]], env_prefix: str | re.Pattern[str] = ENV_PREFIX, debug: bool = False):
-    cdef dict _env_kwargs
-    cdef str _env_prefix = env_prefix.upper()
+def parse_env(
+    threshold_kwargs: dict[str, Any],
+    change_ledger: dict[str, dict[str, str | int]],
+    env_prefix: str | re.Pattern[str] = ENV_PREFIX,
+    debug: bool = False,
+) -> tuple[dict, dict]:
+    _env_kwargs: dict
 
     if debug:
         LOGGER.remove()
@@ -22,14 +28,16 @@ cpdef tuple[dict, dict] parse_env(threshold_kwargs: dict[str, Any], change_ledge
         pattern = env_prefix
 
     elif isinstance(env_prefix, str):
-        pattern = re.compile(rf"(?:{env_prefix}.)([A-Za-z0\-\_]+)")
-    
+        pattern = re.compile(rf"(?:{env_prefix.upper()}.)([A-Za-z0\-\_]+)")
+
     else:
-        raise ValueError(f"'env_prefix' must be either a string or Regex string pattern. Received: {env_prefix} ({type(env_prefix)}).")
+        raise ValueError(
+            f"'env_prefix' must be either a string or Regex string pattern. Received: {env_prefix} ({type(env_prefix)})."
+        )
 
     LOGGER.debug(f"{env_prefix=}")
     LOGGER.debug(f"{pattern=}")
-    
+
     _env_kwargs = {}
 
     for k, v in os.environ.items():
@@ -45,7 +53,7 @@ cpdef tuple[dict, dict] parse_env(threshold_kwargs: dict[str, Any], change_ledge
 
     LOGGER.debug(f"{_env_kwargs=}")
     threshold_kwargs.update(_env_kwargs)
-    
+
     LOGGER.debug(f"Updated {threshold_kwargs=}")
 
     for key in _env_kwargs:

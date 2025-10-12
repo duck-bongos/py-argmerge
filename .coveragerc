@@ -1,0 +1,15 @@
+[run]
+plugins = Cython.Coverage
+source = argmerge
+concurrency = thread
+
+
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    
+include = 
+    src/argmerge/*.py
+    src/argmerge/*.pyx

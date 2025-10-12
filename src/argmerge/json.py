@@ -1,16 +1,18 @@
 import json
-import os
 import sys
 from pathlib import Path
 from typing import Any
 
 from loguru import logger as LOGGER
 
-cpdef tuple[dict, dict] parse_json(threshold_kwargs: dict[str, Any], change_ledger: dict[str, dict[str, str | int]], fpath_json: str | Path, debug: bool = False):
 
-    cdef dict _json_kwargs
-    cdef str _cli_input
-    cdef list[tuple[str, str]] cli_matches
+def parse_json(
+    threshold_kwargs: dict[str, Any],
+    change_ledger: dict[str, dict[str, str | int]],
+    fpath_json: str | Path,
+    debug: bool = False,
+) -> tuple[dict, dict]:
+    _json_kwargs: dict
 
     if debug:
         LOGGER.remove()
@@ -26,7 +28,7 @@ cpdef tuple[dict, dict] parse_json(threshold_kwargs: dict[str, Any], change_ledg
             " Please use '.json'."
         )
 
-    with open(fpath_json, 'rb') as fy:
+    with open(fpath_json, "rb") as fy:
         _json_kwargs = json.load(fy)
 
     LOGGER.debug(f"{_json_kwargs=}")
@@ -37,5 +39,3 @@ cpdef tuple[dict, dict] parse_json(threshold_kwargs: dict[str, Any], change_ledg
         change_ledger[key] = {"label": f"JSON ({_fpath_json})", "rank": 10}
 
     return threshold_kwargs, change_ledger
-
-    

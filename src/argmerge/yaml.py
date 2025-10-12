@@ -7,16 +7,14 @@ from pathlib import Path
 import yaml
 from loguru import logger as LOGGER
 
-cpdef tuple[dict, dict] parse_yaml(
-    threshold_kwargs: dict[str, str],
-    change_ledger: dict[str, dict[str, str | int]], 
-    fpath_yaml: str | Path, 
-    debug: bool = False
-):
 
-    cdef dict _yaml_kwargs
-    cdef str _cli_input
-    cdef list[tuple[str, str]] cli_matches
+def parse_yaml(
+    threshold_kwargs: dict[str, str],
+    change_ledger: dict[str, dict[str, str | int]],
+    fpath_yaml: str | Path,
+    debug: bool = False,
+) -> tuple[dict, dict]:
+    _yaml_kwargs: dict
 
     if debug:
         LOGGER.remove()
@@ -32,7 +30,7 @@ cpdef tuple[dict, dict] parse_yaml(
             " Please use '.yml' or '.yaml'."
         )
 
-    with open(fpath_yaml, 'rb') as fy:
+    with open(fpath_yaml, "rb") as fy:
         _yaml_kwargs = yaml.safe_load(fy)
 
     LOGGER.debug(f"{_yaml_kwargs=}")
@@ -43,5 +41,3 @@ cpdef tuple[dict, dict] parse_yaml(
         change_ledger[key] = {"label": f"YAML ({_fpath_yaml})", "rank": 20}
 
     return threshold_kwargs, change_ledger
-
-    

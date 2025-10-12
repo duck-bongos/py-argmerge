@@ -1,8 +1,8 @@
 """Unit tests for the argmerge._func::{parse_func, update_from_function} functions."""
 
 import pytest
-from argmerge._func import parse_func, update_from_function
 
+from argmerge.func import parse_func, update_from_function
 from tests.utils import no_error
 
 

@@ -1,9 +1,9 @@
 """Unit tests for the argmerge._yaml::parse_yaml() function."""
 
 import pytest
-from argmerge._yaml import parse_yaml
 from yaml.scanner import ScannerError
 
+from argmerge.yaml import parse_yaml
 from tests.utils import no_error
 
 fpath_bad = "fpath_config.json"

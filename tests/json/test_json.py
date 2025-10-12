@@ -3,7 +3,7 @@
 import json
 
 import pytest
-from argmerge._json import parse_json
+from argmerge.json import parse_json
 
 from tests.utils import no_error
 

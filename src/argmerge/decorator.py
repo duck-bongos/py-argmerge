@@ -3,12 +3,12 @@ import re
 from pathlib import Path
 from warnings import warn
 
-from argmerge._cli import CLI_PATTERN, parse_cli
-from argmerge._env import ENV_PREFIX, parse_env
-from argmerge._func import parse_func, update_from_function
-from argmerge._json import parse_json
-from argmerge._trace import LOG_LEVELS, trace_arg_lineage
-from argmerge._yaml import parse_yaml
+from argmerge.cli import CLI_PATTERN, parse_cli
+from argmerge.env import ENV_PREFIX, parse_env
+from argmerge.func import parse_func, update_from_function
+from argmerge.json import parse_json
+from argmerge.trace import LOG_LEVELS, trace_arg_lineage
+from argmerge.yaml import parse_yaml
 
 
 def threshold(
