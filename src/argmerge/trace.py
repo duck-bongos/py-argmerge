@@ -61,6 +61,16 @@ def trace_arg_lineage(
     change_ledger: dict[str, str],
     level: str = "",
 ):
+    """Determine where each argument in the function came from.
+
+    Only include arguments that exist in the function header. If a function accepts
+    **kwargs and an irrelevant keyword is provided - discard it.
+
+    args:
+        f (callable):
+        change_ledger (dict): The final dictionary detailing where every argument
+            is set - defaults, files, environment variables, CLI arguments, etc.
+    """
     sig = signature(f)
     _changed = {k: v for k, v in change_ledger.items() if k in sig.parameters}
 

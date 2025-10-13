@@ -152,3 +152,61 @@ def test_threshold_parametrized(
             m.setenv(env_var_name, env_var_value)
 
         show_hierarchy()
+
+
+OVERRIDE_TEST_CASES = [
+    # Normally an error, the argument is overriden at runtime by the developer
+    ("", {}, "", "", ENV_PREFIX, CLI_PATTERN, "", False, no_error),
+    (
+        "--second=Liskov",
+        {"THRESH_FIRST": "99"},
+        "tests/json/good_config.json",  # tests are run from base directory
+        "tests/yaml/good_config.yaml",
+        ENV_PREFIX,
+        CLI_PATTERN,
+        "SUCCESS",
+        True,
+        no_error,
+    ),
+]
+
+
+@pytest.mark.parametrize(
+    "cli_args,env_mapping,fpath_json,fpath_yaml,env_prefix,"
+    "cli_pattern,trace_level,debug,context",
+    OVERRIDE_TEST_CASES,
+)
+def test_override_threshold(
+    monkeypatch,
+    cli_args,
+    env_mapping,
+    fpath_json,
+    fpath_yaml,
+    env_prefix,
+    cli_pattern,
+    trace_level,
+    debug,
+    context,
+):
+    @threshold(
+        fpath_json=fpath_json,
+        fpath_yaml=fpath_yaml,
+        env_prefix=env_prefix,
+        cli_pattern=cli_pattern,
+        trace_level=trace_level,
+        debug=debug,
+    )
+    def show_hierarchy(first: int, second: str, third: float = 0.0):
+        return first, second, third
+
+    if isinstance(cli_args, list) and all(isinstance(x, str) for x in cli_args):
+        monkeypatch.setattr("sys.argv", cli_args)
+
+    else:
+        monkeypatch.setattr("sys.argv", ["None"])
+
+    with monkeypatch.context() as m, context:
+        for env_var_name, env_var_value in env_mapping.items():
+            m.setenv(env_var_name, env_var_value)
+
+        show_hierarchy(first=1, second="two", third=3.0)
