@@ -7,15 +7,15 @@ from tests.utils import no_error
 
 
 # [parse_func]
-def no_default_params(a: int, b: str, c: float):
+def no_default_params(first: int, second: str, third: float):
     pass
 
 
-def mixed_params(a: int, b: str, c: float = 0.0):
+def mixed_params(first: int, second: str, third: float = 0.0):
     pass
 
 
-def all_default_params(a: int = 7, b: str = "", c: float = 0.0):
+def all_default_params(first: int = 7, second: str = "", third: float = 0.0):
     pass
 
 
@@ -30,19 +30,19 @@ def all_default_params(a: int = 7, b: str = "", c: float = 0.0):
         (
             mixed_params,
             True,
-            {"c": 0.0},
-            {"c": {"label": "Python Function default", "rank": 0}},
+            {"third": 0.0},
+            {"third": {"label": "Python Function default", "rank": 0}},
             no_error,
         ),
         # if all functions have defaults
         (
             all_default_params,
             True,
-            {"a": 7, "b": "", "c": 0.0},
+            {"first": 7, "second": "", "third": 0.0},
             {
-                "c": {"label": "Python Function default", "rank": 0},
-                "b": {"label": "Python Function default", "rank": 0},
-                "a": {"label": "Python Function default", "rank": 0},
+                "third": {"label": "Python Function default", "rank": 0},
+                "second": {"label": "Python Function default", "rank": 0},
+                "first": {"label": "Python Function default", "rank": 0},
             },
             no_error,
         ),
@@ -63,37 +63,37 @@ def test_parse_func(function, debug, expected_kwargs, expected_ledger, context):
         (
             {},
             {},
-            {"a": 1},
+            {"first": 1},
             False,
-            {"a": 1},
-            {"a": {"label": "developer-provided", "rank": 100}},
+            {"first": 1},
+            {"first": {"label": "developer-provided", "rank": 100}},
             no_error,
         ),
         # one previous change
         (
-            {"a": 3},
-            {"a": {"label": "Python Function default", "rank": 0}},
-            {"a": 1},
+            {"first": 3},
+            {"first": {"label": "Python Function default", "rank": 0}},
+            {"first": 1},
             False,
-            {"a": 1},
-            {"a": {"label": "developer-provided", "rank": 100}},
+            {"first": 1},
+            {"first": {"label": "developer-provided", "rank": 100}},
             no_error,
         ),
         # many previous changes from many levels
         (
-            {"a": 1, "b": "", "c": 0.0},
+            {"first": 1, "second": "", "third": 0.0},
             {
-                "a": {"label": "Python Function default", "rank": 0},
-                "b": {"label": "Environment Variable", "rank": 30},
-                "c": {"label": "CLI", "rank": 40},
+                "first": {"label": "Python Function default", "rank": 0},
+                "second": {"label": "Environment Variable", "rank": 30},
+                "third": {"label": "CLI", "rank": 40},
             },
-            {"a": 99, "b": "Ken Thompson", "c": -0.8},
+            {"first": 99, "second": "Ken Thompson", "third": -0.8},
             True,
-            {"a": 99, "b": "Ken Thompson", "c": -0.8},
+            {"first": 99, "second": "Ken Thompson", "third": -0.8},
             {
-                "a": {"label": "developer-provided", "rank": 100},
-                "b": {"label": "developer-provided", "rank": 100},
-                "c": {"label": "developer-provided", "rank": 100},
+                "first": {"label": "developer-provided", "rank": 100},
+                "second": {"label": "developer-provided", "rank": 100},
+                "third": {"label": "developer-provided", "rank": 100},
             },
             no_error,
         ),

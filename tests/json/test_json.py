@@ -3,8 +3,8 @@
 import json
 
 import pytest
-from argmerge.json import parse_json
 
+from argmerge.json import parse_json
 from tests.utils import no_error
 
 
@@ -48,27 +48,27 @@ from tests.utils import no_error
             {},
             "tests/json/good_config.json",
             True,
-            {"a": 1, "b": {"c": 3, "d": 4}},
+            {"first": 1, "second": {"third": 3, "d": 4}},
             {
-                "a": {"label": "JSON (tests/json/good_config.json)", "rank": 10},
-                "b": {"label": "JSON (tests/json/good_config.json)", "rank": 10},
+                "first": {"label": "JSON (tests/json/good_config.json)", "rank": 10},
+                "second": {"label": "JSON (tests/json/good_config.json)", "rank": 10},
             },
             no_error,
         ),
         # debug false
         pytest.param(
-            {"a": 7, "c": 9},
+            {"first": 7, "third": 9},
             {
-                "a": {"label": "JSON (other.json)", "rank": 10},
-                "c": {"label": "JSON (other.json)", "rank": 10},
+                "first": {"label": "JSON (other.json)", "rank": 10},
+                "third": {"label": "JSON (other.json)", "rank": 10},
             },
             "tests/json/good_config.json",
             True,
-            {"a": 1, "b": {"c": 3, "d": 4}, "c": 9},
+            {"first": 1, "second": {"third": 3, "d": 4}, "third": 9},
             {
-                "a": {"label": "JSON (tests/json/good_config.json)", "rank": 10},
-                "b": {"label": "JSON (tests/json/good_config.json)", "rank": 10},
-                "c": {"label": "JSON (other.json)", "rank": 10},
+                "first": {"label": "JSON (tests/json/good_config.json)", "rank": 10},
+                "second": {"label": "JSON (tests/json/good_config.json)", "rank": 10},
+                "third": {"label": "JSON (other.json)", "rank": 10},
             },
             no_error,
         ),

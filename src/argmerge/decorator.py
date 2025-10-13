@@ -1,7 +1,6 @@
 import functools
 import re
 from pathlib import Path
-from warnings import warn
 
 from argmerge.cli import CLI_PATTERN, parse_cli
 from argmerge.env import ENV_PREFIX, parse_env
@@ -17,7 +16,7 @@ def threshold(
     fpath_yaml: str | Path = "",
     env_prefix: str | re.Pattern[str] = ENV_PREFIX,  # 'THRESH', also set at PYTHRESH
     cli_pattern: str | re.Pattern[str] = CLI_PATTERN,
-    trace_args: str = "",
+    trace_level: str = "",
     debug: bool = False,
     **kwargs,
 ):
@@ -66,25 +65,22 @@ def threshold(
                     _threshold_kwargs, _change_ledger, func_kwargs=_kwargs, debug=debug
                 )
 
-                if trace_args.lower() in LOG_LEVELS:
+                if trace_level.lower() in LOG_LEVELS:
                     trace_arg_lineage(
                         f,
                         _change_ledger,
-                        level=trace_args,
+                        level=trace_level,
                     )
 
-                elif trace_args != "":
-                    warn(
-                        f"'trace_args' has been set to '{trace_args}', which is not supported. Only {LOG_LEVELS} are supported."
-                    )
-
-                elif trace_args == "":
+                elif trace_level == "":
                     # default behavior
                     pass
 
                 else:
                     raise ValueError(
-                        f"'trace_args' must be set to either one of '{LOG_LEVELS} or an empty string."
+                        f"'trace_level' has been set to '{trace_level}', which is not "
+                        "supported. Please set 'trace_level' to an empty string or one"
+                        f" of: {LOG_LEVELS}."
                     )
 
                 return f(*_args, **_threshold_kwargs)
