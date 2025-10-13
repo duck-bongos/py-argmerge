@@ -88,7 +88,7 @@ def test_parse_func(function, debug, expected_kwargs, expected_ledger, context):
                 "c": {"label": "CLI", "rank": 40},
             },
             {"a": 99, "b": "Ken Thompson", "c": -0.8},
-            False,
+            True,
             {"a": 99, "b": "Ken Thompson", "c": -0.8},
             {
                 "a": {"label": "developer-provided", "rank": 100},

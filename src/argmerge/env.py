@@ -44,9 +44,13 @@ def parse_env(
         _search = pattern.search(k)
 
         if _search is not None:
-            key = _search.group(1).lower()
-            LOGGER.debug(f"{key=} {v=}")
-            _env_kwargs[key] = extract_literals(v)
+            try:
+                key = _search.group(1).lower()
+                LOGGER.debug(f"{key=} {v=}")
+                _env_kwargs[key] = extract_literals(v)
+
+            except IndexError:
+                LOGGER.debug(f"Regex search failed on environment variable {k}.")
 
         else:
             LOGGER.debug(f"Miss: {k=}")

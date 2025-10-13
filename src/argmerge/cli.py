@@ -6,7 +6,7 @@ from typing import Any
 
 from loguru import logger as LOGGER
 
-CLI_PATTERN: re.Pattern = re.compile(r"--([A-Za-z\_\-]+)\=([0-9A-Za-z\_\-]+)")
+CLI_PATTERN: re.Pattern = re.compile(r"--([A-Za-z\_\-]+)\=([0-9A-Za-z\_\-\.]+)")
 
 
 def parse_cli(

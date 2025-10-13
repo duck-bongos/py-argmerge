@@ -1,5 +1,7 @@
 """Unit tests for the argmerge._func::{parse_func, update_from_function} functions."""
 
+import re
+
 import pytest
 
 from argmerge.env import ENV_PREFIX, parse_env
@@ -79,6 +81,35 @@ from tests.utils import no_error
                 "c": {"label": "Environment Variable", "rank": 30},
             },
             no_error,
+        ),
+        # Do NOT Provide a capture group in the regex pattern
+        # this will skip THRESH_B an THRESH_C
+        # The proper Regex is r'^THRESH.([A-Z_-]+)$'
+        (
+            {"NOT_RELEVANT_A": "99", "THRESH_B": "2.0", "THRESH_C": "laugh"},
+            {"a": 1},
+            {"a": {"label": "Python Function default", "rank": 0}},
+            re.compile("^THRESH.[A-Z_-]+"),
+            True,
+            {"a": 1},
+            {
+                "a": {"label": "Python Function default", "rank": 0},
+            },
+            no_error,
+        ),
+        (
+            {"NOT_RELEVANT_A": "99", "THRESH_B": "2.0", "THRESH_C": "laugh"},
+            {"a": 1},
+            {"a": {"label": "Python Function default", "rank": 0}},
+            77,
+            True,
+            {"a": 1, "b": 2.0, "c": "laugh"},
+            {
+                "a": {"label": "Python Function default", "rank": 0},
+                "b": {"label": "Environment Variable", "rank": 30},
+                "c": {"label": "Environment Variable", "rank": 30},
+            },
+            pytest.raises(ValueError),
         ),
     ],
 )
