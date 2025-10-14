@@ -1,4 +1,4 @@
-# Exaples
+# Example Usage
 Below, we'll show you how to display the keywords from each source, how to bypass using the `threshold` decorator entirely, then walk through examples that build on each other to show how arguments are overwritten.
 
 ## Tracing

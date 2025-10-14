@@ -17,8 +17,10 @@ dependencies = [
 [project.optional-dependencies]
 documentation = [
     "mkdocs>=1.6.1",
+    "mkdocs-autoapi>=0.4.1",
     "mkdocs-landing>=0.0.8",
     "mkdocs-terminal>=4.7.0",
+    "mkdocstrings[python]>=0.30.1",
 ]
 
 [build-system]

@@ -5,12 +5,25 @@ theme:
   logo: img/bracket-logo.svg
   palette:
     primary: cyan
-    
   features:
+    - content.code.copy
     - navigation.tabs
 nav:
   - Home: index.md
-  - API Docs: API/main.md
   - Examples: examples.md
 plugins:
   - search
+  - mkdocs-autoapi:
+      autoapi_dir: src
+      autoapi_ignore:
+        - "**tests**"
+        - ./*.py
+        - .tox/
+        - .venv/
+        - site-packages/
+        - "**__init__.py"
+  - mkdocstrings:
+      handlers:
+        python:
+          paths:
+            - src

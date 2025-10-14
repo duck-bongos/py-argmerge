@@ -1,5 +1,5 @@
-# cython: linetrace=True
-# distutils: define_macros=CYTHON_TRACE=1
+"""Module that provides a flexible CLI parser component in the decorator."""
+
 import re
 import sys
 from typing import Any
@@ -10,10 +10,19 @@ from argmerge.base import SourceParser
 
 __all__ = ["CLI_PATTERN", "parse_cli"]
 
+# matches '--arg=value'
+# does not match '--arg value'
 CLI_PATTERN: re.Pattern = re.compile(r"--([A-Za-z\_\-]+)\=([0-9A-Za-z\_\-\.]+)")
 
 
 class CLIParser(SourceParser):
+    """The parser the extracts relevant CLI arguments.
+
+    Vars:
+        label (str):
+
+    """
+
     label: str = "CLI"
     rank: int = 40
 

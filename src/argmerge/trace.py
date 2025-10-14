@@ -1,5 +1,17 @@
-# cython: linetrace=True
-# distutils: define_macros=CYTHON_TRACE=1
+"""Module to write the source of each function keyword argument for the developer
+
+Example:
+
+    $ uv run main.py  # trace_level=DEBUG set in the program
+    2025-10-14 14:46:45.784 | DEBUG    | argmerge.trace:_write_trace:27 -
+    Parameter Name  | Source
+    =======================================
+    third   | Python Function default
+    fourth  | Python Function default
+    fifth   | Python Function default
+    first   | developer-provided
+    second  | developer-provided
+"""
 
 import sys
 from inspect import signature
@@ -11,6 +23,17 @@ LOG_LEVELS = ("critical", "warning", "success", "info", "debug")
 
 
 def _write_trace(message: str, level: str):
+    """Write the trace message out to the specified log level.
+
+    args:
+        message (str): The debugging message for the developer.
+        level (str): The `loguru` log level to set.
+
+    raises:
+        TypeError: `level` must be a string.
+        ValueError: `level` must be in one of the default loguru logger levels:
+            `("critical", "warning", "success", "info", "debug")`
+    """
     if isinstance(level, str):
         _level = level.lower()
 
@@ -48,7 +71,7 @@ def _log_trace(ledger: dict[str, dict[str, str | int]], level: str = ""):
         _params = [f"{k}\t| {v}" for k, v in _pre_join_spacing.items()]
         _heading_spacing = max(map(len, _params)) + 7
         _heading_param = "Parameter Name".ljust(_key_spacing)
-        _heading_loc = "Location Set".ljust(_value_spacing)
+        _heading_loc = "Source".ljust(_value_spacing)
         _heading = f"{_heading_param}\t| {_heading_loc}"
         _join = "\n".join(_params)
         msg = f"\n{_heading}\n{'=' * _heading_spacing}\n{_join}"

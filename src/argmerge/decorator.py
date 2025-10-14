@@ -4,7 +4,7 @@ from pathlib import Path
 
 from argmerge.cli import CLI_PATTERN, parse_cli
 from argmerge.env import ENV_PREFIX, parse_env
-from argmerge.func import parse_func, update_from_function
+from argmerge.func import parse_func, parse_func_runtime
 from argmerge.json import parse_json
 from argmerge.trace import LOG_LEVELS, trace_arg_lineage
 from argmerge.yaml import parse_yaml
@@ -62,7 +62,7 @@ def threshold(
                     debug=debug,
                 )
 
-                _threshold_kwargs, _change_ledger = update_from_function(
+                _threshold_kwargs, _change_ledger = parse_func_runtime(
                     _threshold_kwargs, _change_ledger, func_kwargs=_kwargs, debug=debug
                 )
 
