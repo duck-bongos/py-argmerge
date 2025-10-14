@@ -33,23 +33,27 @@ class YAMLParser(SourceParser):
         LOGGER.debug(f"{fpath_yaml=}")
 
         _fpath_yaml = Path(fpath_yaml)
-        if _fpath_yaml.suffix not in (".yml", ".yaml"):
-            raise ValueError(
-                f"The YAML suffix of '{_fpath_yaml.suffix}' is not correct."
-                " Please use '.yml' or '.yaml'."
-            )
+        if _fpath_yaml == Path(""):
+            LOGGER.debug("fpath_yaml not provided, skipping.")
 
-        cls.label = f"YAML ({_fpath_yaml})"
+        else:
+            if _fpath_yaml.suffix not in (".yml", ".yaml"):
+                raise ValueError(
+                    f"The YAML suffix of '{_fpath_yaml.suffix}' is not correct."
+                    " Please use '.yml' or '.yaml'."
+                )
 
-        with open(fpath_yaml, "rb") as fy:
-            _yaml_kwargs = yaml.safe_load(fy)
+            cls.label = f"YAML ({_fpath_yaml})"
 
-        LOGGER.debug(f"{_yaml_kwargs=}")
-        threshold_kwargs.update(_yaml_kwargs)
-        LOGGER.debug(f"Updated {threshold_kwargs=}")
+            with open(fpath_yaml, "rb") as fy:
+                _yaml_kwargs = yaml.safe_load(fy)
 
-        for key in _yaml_kwargs:
-            change_ledger[key] = {"label": cls.label, "rank": cls.rank}
+            LOGGER.debug(f"{_yaml_kwargs=}")
+            threshold_kwargs.update(_yaml_kwargs)
+            LOGGER.debug(f"Updated {threshold_kwargs=}")
+
+            for key in _yaml_kwargs:
+                change_ledger[key] = {"label": cls.label, "rank": cls.rank}
 
         return threshold_kwargs, change_ledger
 

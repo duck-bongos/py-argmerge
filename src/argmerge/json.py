@@ -31,23 +31,27 @@ class JSONParser(SourceParser):
         LOGGER.debug(f"{fpath_json=}")
 
         _fpath_json = Path(fpath_json)
-        if _fpath_json.suffix != ".json":
-            raise ValueError(
-                f"The JSON suffix of {_fpath_json.as_posix()} is not correct."
-                " Please use '.json'."
-            )
+        if _fpath_json == Path(""):
+            LOGGER.debug("fpath_json not provided, skipping.")
 
-        cls.label = f"JSON ({_fpath_json})"
+        else:
+            if _fpath_json.suffix != ".json":
+                raise ValueError(
+                    f"The JSON suffix of '{_fpath_json.as_posix()}' is not correct."
+                    " Please use '.json'."
+                )
 
-        with open(fpath_json, "rb") as fy:
-            _json_kwargs = json.load(fy)
+            cls.label = f"JSON ({_fpath_json})"
 
-        LOGGER.debug(f"{_json_kwargs=}")
-        threshold_kwargs.update(_json_kwargs)
-        LOGGER.debug(f"Updated {threshold_kwargs=}")
+            with open(fpath_json, "rb") as fy:
+                _json_kwargs = json.load(fy)
 
-        for key in _json_kwargs:
-            change_ledger[key] = {"label": cls.label, "rank": cls.rank}
+            LOGGER.debug(f"{_json_kwargs=}")
+            threshold_kwargs.update(_json_kwargs)
+            LOGGER.debug(f"Updated {threshold_kwargs=}")
+
+            for key in _json_kwargs:
+                change_ledger[key] = {"label": cls.label, "rank": cls.rank}
 
         return threshold_kwargs, change_ledger
 

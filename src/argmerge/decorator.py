@@ -34,21 +34,19 @@ def threshold(
                     _threshold_kwargs, _change_ledger, f, debug=debug
                 )
 
-                if Path(fpath_json).suffix == ".json":
-                    _threshold_kwargs, _change_ledger = parse_json(
-                        _threshold_kwargs,
-                        _change_ledger,
-                        fpath_json=fpath_json,
-                        debug=debug,
-                    )
+                _threshold_kwargs, _change_ledger = parse_json(
+                    _threshold_kwargs,
+                    _change_ledger,
+                    fpath_json=fpath_json,
+                    debug=debug,
+                )
 
-                if Path(fpath_yaml).suffix in (".yml", ".yaml"):
-                    _threshold_kwargs, _change_ledger = parse_yaml(
-                        _threshold_kwargs,
-                        _change_ledger,
-                        fpath_yaml=fpath_yaml,
-                        debug=debug,
-                    )
+                _threshold_kwargs, _change_ledger = parse_yaml(
+                    _threshold_kwargs,
+                    _change_ledger,
+                    fpath_yaml=fpath_yaml,
+                    debug=debug,
+                )
 
                 _threshold_kwargs, _change_ledger = parse_env(
                     _threshold_kwargs,
