@@ -1,5 +1,4 @@
 {
-    "food": "Pizza",
-    "color": "green",
-    "age": 152
+    "first": 100,
+    "second": "Python"
 }

@@ -9,12 +9,15 @@ authors = [
 requires-python = ">=3.10"
 dependencies = [
     "loguru>=0.7.3",
+    "mkdocs-material>=9.6.21",
     "pyyaml>=6.0.3",
 ]
 
 [project.optional-dependencies]
 documentation = [
     "mkdocs>=1.6.1",
+    "mkdocs-landing>=0.0.8",
+    "mkdocs-terminal>=4.7.0",
 ]
 
 [build-system]
