@@ -9,7 +9,7 @@ from loguru import logger as LOGGER
 
 from argmerge.base import SourceParser
 
-__all__ = ["parse_func", "update_from_function"]
+__all__ = ["parse_func", "parse_func_runtime"]
 
 
 class FuncParser(SourceParser):
@@ -79,4 +79,4 @@ class FuncUpdater(SourceParser):
         return threshold_kwargs, change_ledger
 
 
-update_from_function = FuncUpdater()
+parse_func_runtime = FuncUpdater()

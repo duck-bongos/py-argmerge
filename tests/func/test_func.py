@@ -1,8 +1,8 @@
-"""Unit tests for the argmerge._func::{parse_func, update_from_function} functions."""
+"""Unit tests for the argmerge._func::{parse_func, parse_func_runtime} functions."""
 
 import pytest
 
-from argmerge.func import parse_func, update_from_function
+from argmerge.func import parse_func, parse_func_runtime
 from tests.utils import no_error
 
 
@@ -69,7 +69,7 @@ def test_parse_func(
         assert expected_ledger == _expected_ledger
 
 
-# [update_from_function]
+# [parse_func_runtime]
 @pytest.mark.parametrize(
     "threshold_kwargs,change_ledger,func_kwargs,debug,expected_kwargs,expected_ledger,context,",
     [
@@ -113,7 +113,7 @@ def test_parse_func(
         ),
     ],
 )
-def test_update_from_function(
+def test_parse_func_runtime(
     threshold_kwargs,
     change_ledger,
     func_kwargs,
@@ -123,7 +123,7 @@ def test_update_from_function(
     context,
 ):
     with context:
-        _expected_kwargs, _expected_ledger = update_from_function(
+        _expected_kwargs, _expected_ledger = parse_func_runtime(
             threshold_kwargs, change_ledger, func_kwargs, debug
         )
         assert expected_kwargs == _expected_kwargs
