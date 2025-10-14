@@ -60,7 +60,7 @@ We determined the hierarchy based on (our perception of) developer experience. T
 We prioritized YAML above JSON is because we find it significantly easier to read because it has less "line noise". JSON contains copious amounts of brackets (`{`,`}`) and commas. These are the only two sources that can pass dictionaries in by default. Of course, passing in different Regular expressions for environment variables and CLI arguments could also capture dictionaries, if you want to figure that out.
 
 ## Planned Future Work
-For specific bite-sized work, you can take a look at [our project's GitHub issues](https://github.com/duck-bongos/py-argmerge/issues).
+For specific bite-sized work, you can take a look at [our project's GitHub issues](https://github.com/duck-bongos/py-argmerge/issues). ⚠️ Caution - this project is new and issues may be under-specified ⚠️
 
 #### Validation
 We want users to be able to validate the input arguments to their program using a `PyDantic BaseModel`. This would slot in after we collect the arguments from all the different sources.

@@ -1,3 +1,5 @@
+"""Module that holds the Abstract Base Class for all external parsers."""
+
 from abc import ABC, abstractmethod
 
 __all__ = ["SourceParser"]
@@ -14,6 +16,12 @@ class SourceParser(ABC):
     it, setting it equal to a variable, ideally beginning with 'parse_'. This will
     allow you to treat it like a function by invoking the __call__ method, which calls
     your parser.
+
+    Args:
+        rank (int): The priority of the parser. Generally, we aim between [0,100] for
+            human-readabilty.
+        label (str): The debugging label to indicate an argument was set at the
+            <source level>.
     """
 
     rank: int = -100

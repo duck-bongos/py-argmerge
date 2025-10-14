@@ -1,4 +1,13 @@
-"""Module that provides a flexible CLI parser component in the decorator."""
+"""Module that provides a flexible CLI parser component in the decorator.
+
+
+```py
+CLI_PATTERN: re.Pattern = re.compile(r"--([A-Za-z\_\-]+)\=([0-9A-Za-z\_\-\.]+)")
+```
+
+- matches `'--arg=value'`
+- does not match `'--arg value'`
+"""
 
 import re
 import sys
@@ -18,8 +27,10 @@ CLI_PATTERN: re.Pattern = re.compile(r"--([A-Za-z\_\-]+)\=([0-9A-Za-z\_\-\.]+)")
 class CLIParser(SourceParser):
     """The parser the extracts relevant CLI arguments.
 
-    Vars:
-        label (str):
+    params:
+        label (str): The debugging label to indicate an argument was set at the CLI.
+        rank (int): The priority of the parser. Generally, we aim between [0,100] for
+            human-readabilty.
 
     """
 
@@ -34,6 +45,20 @@ class CLIParser(SourceParser):
         debug: bool = False,
         **kwargs,
     ) -> tuple[dict, dict]:
+        """Parse the CLI commands using the cli_pattern regular expression.
+
+        Args:
+            threshold_kwargs (dict[str, Any]): kwargs passed around the
+                @threshold decorator.
+            change_ledger (dict[str, dict[str, str  |  int]]): Tracks when kwargs are
+                updated inside the @threshold decorator.
+            cli_pattern (re.Pattern[str], optional): The regular expression pattern
+                used to extract arguments from the CLI. Defaults to CLI_PATTERN.
+            debug (bool, optional): Flag to turn on more logging. Defaults to False.
+
+        Returns:
+            tuple[dict, dict]: an updated `threshold_kwargs` and `change_ledger`.
+        """
         _cli_kwargs: dict
         _cli_input: str
 

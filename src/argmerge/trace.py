@@ -3,7 +3,7 @@
 Example:
 
     $ uv run main.py  # trace_level=DEBUG set in the program
-    2025-10-14 14:46:45.784 | DEBUG    | argmerge.trace:_write_trace:27 -
+    2025-10-14 16:15:33.466 | DEBUG    | argmerge.trace:_write_trace:50 -
     Parameter Name  | Source
     =======================================
     third   | Python Function default
@@ -11,6 +11,7 @@ Example:
     fifth   | Python Function default
     first   | developer-provided
     second  | developer-provided
+    =======================================
 """
 
 import sys
@@ -53,29 +54,66 @@ def _write_trace(message: str, level: str):
 
 
 def _log_trace(ledger: dict[str, dict[str, str | int]], level: str = ""):
+    """Compose a developer-friendly report of each kwarg's source form the ledger.
+
+    First, sort the keys by their ranks. Ranks are sorted in ascending order such that
+    the highest ranked sources (Developer-Provided, etc) will be seen first. Then sort
+    the labels by that same order. Next, we will dynamically produce the report. We
+    will find the kwarg and source each with the longest length. Then, left-justify
+    (ljust) each kwarg and source to fill the space. Repeat for each kwarg-source pair.
+    We then set the heading such that the '=' characters "hang" over the report,
+    visually grouping them.
+
+    Args:
+        ledger (dict[str, dict[str, str  |  int]]): The change ledger that describes
+            each kwarg's highest-ranked source.
+        level (str, optional): A `loguru` logging level. Defaults to "", which means
+            'DEBUG' will be set.
+    """
+
     if len(ledger) == 0:
         LOGGER.warning("Change ledger is empty, will not write out!")
 
     else:
+        # split the ranks from the labels
         ranks: dict[str, int] = {k: int(v["rank"]) for k, v in ledger.items()}
         labels: dict[str, str] = {k: str(v["label"]) for k, v in ledger.items()}
+
+        # First, sort the keys by their ranks.
         sorted_keys = [x for x, _ in sorted(ranks.items(), key=lambda x: x[1])]
         sorted_labels = {k: labels[k] for k in sorted_keys}
 
-        _key_spacing = max(list(map(len, sorted_labels.keys())))
-        _value_spacing = max(list(map(len, sorted_labels.values())))
+        # calculate the longest kwarg name and source name
+        _key_spacing: int = max(list(map(len, sorted_labels.keys())))
+        _value_spacing: int = max(list(map(len, sorted_labels.values())))
+
+        # left-justify
         _pre_join_spacing = {
             k.ljust(_key_spacing, " "): v.ljust(_value_spacing, " ")
             for k, v in sorted_labels.items()
         }
+
+        # stringified, left-justified kwargs and sources
         _params = [f"{k}\t| {v}" for k, v in _pre_join_spacing.items()]
-        _heading_spacing = max(map(len, _params)) + 7
+
+        # set up the heading
+        # heading will extend over the params
+        _heading_spacing: int = max(map(len, _params)) + 7
+
         _heading_param = "Parameter Name".ljust(_key_spacing)
         _heading_loc = "Source".ljust(_value_spacing)
-        _heading = f"{_heading_param}\t| {_heading_loc}"
-        _join = "\n".join(_params)
-        msg = f"\n{_heading}\n{'=' * _heading_spacing}\n{_join}"
 
+        # construct the full heading
+        _heading = f"{_heading_param}\t| {_heading_loc}"
+
+        _body = "\n".join(_params)
+
+        # combine the heading with the body
+        msg = (
+            f"\n{_heading}\n{'=' * _heading_spacing}\n{_body}\n{'=' * _heading_spacing}"
+        )
+
+        # log it to the appropriate level
         _write_trace(message=msg, level=level)
 
 

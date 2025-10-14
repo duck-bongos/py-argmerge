@@ -3,6 +3,7 @@
 import os
 import re
 import sys
+from typing import Any
 
 from loguru import logger as LOGGER
 
@@ -15,17 +16,43 @@ ENV_PREFIX = os.environ.get("PYTHRESH", "THRESH")
 
 
 class EnvParser(SourceParser):
+    """The parser the extracts relevant environment variables.
+
+    Args:
+        label (str): The debugging label to indicate an argument was set by environment
+            variables.
+        rank (int): The priority of the parser. Generally, we aim between [0,100] for
+            human-readabilty.
+    """
+
     rank: int = 30
     label: str = "Environment Variable"
 
     def __call__(
         cls,
-        threshold_kwargs,
-        change_ledger,
+        threshold_kwargs: dict[str, Any],
+        change_ledger: dict[str, dict[str, str | int]],
         env_prefix: str | re.Pattern[str] = ENV_PREFIX,
         debug=False,
         **kwargs,
     ):
+        """Parse the environment variables using the `env_prefix` and update inputs.
+
+        Args:
+            threshold_kwargs (dict[str, Any]): kwargs passed around the
+                @threshold decorator.
+            change_ledger (dict[str, dict[str, str  |  int]]): Tracks when kwargs are
+                updated inside the @threshold decorator.
+            env_prefix (str | re.Pattern[str], optional): The prefix used to search for
+                set environment variables. Defaults to ENV_PREFIX, which is 'THRESH_'.
+            debug (bool, optional): Flag to turn on more logging. Defaults to False.
+
+        Raises:
+            ValueError: `env_prefix` must either be a string or Regex string pattern.
+
+        Returns:
+            tuple[dict, dict]: an updated `threshold_kwargs` and `change_ledger`.
+        """
         if debug:
             LOGGER.remove()
             LOGGER.add(sys.stderr, level="DEBUG")
