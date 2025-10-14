@@ -16,4 +16,4 @@ def test_bad_class_declaration():
             label: str = "Bad"
             rank = int = -100
 
-        bad = Bad()
+        Bad()
