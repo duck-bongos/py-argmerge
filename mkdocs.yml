@@ -4,7 +4,8 @@ theme:
   name: material
   logo: img/bracket-logo.svg
   palette:
-    primary: green
+    primary: cyan
+    
   features:
     - navigation.tabs
 nav:
