@@ -14,5 +14,5 @@ class SourceParser(ABC):
     @abstractmethod
     def __call__(
         cls, threshold_kwargs: dict, ledger: dict, debug: bool = False, **kwargs
-    ):
+    ) -> tuple[dict, dict]:
         """This is too abstract to be covered"""

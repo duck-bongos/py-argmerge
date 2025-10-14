@@ -38,3 +38,6 @@ dev = [
 branch = true
 parallel = true
 source_pkgs = ["argmerge"]
+
+[tool.mypy]
+disable_error_code = ["import-not-found", "override"]

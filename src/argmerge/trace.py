@@ -34,8 +34,8 @@ def _log_trace(ledger: dict[str, dict[str, str | int]], level: str = ""):
         LOGGER.warning("Change ledger is empty, will not write out!")
 
     else:
-        ranks = {k: v["rank"] for k, v in ledger.items()}
-        labels = {k: v["label"] for k, v in ledger.items()}
+        ranks: dict[str, int] = {k: int(v["rank"]) for k, v in ledger.items()}
+        labels: dict[str, str] = {k: str(v["label"]) for k, v in ledger.items()}
         sorted_keys = [x for x, _ in sorted(ranks.items(), key=lambda x: x[1])]
         sorted_labels = {k: labels[k] for k in sorted_keys}
 
@@ -58,7 +58,7 @@ def _log_trace(ledger: dict[str, dict[str, str | int]], level: str = ""):
 
 def trace_arg_lineage(
     f: Callable,
-    change_ledger: dict[str, str],
+    change_ledger: dict[str, dict[str, str | int]],
     level: str = "",
 ):
     """Determine where each argument in the function came from.
