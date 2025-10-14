@@ -7,55 +7,76 @@ from typing import Any, Callable
 
 from loguru import logger as LOGGER
 
+from argmerge.base import SourceParser
 
-def parse_func(f: Callable, debug: bool = False) -> tuple[dict, dict]:
-    """Lowest level parser - retrieve function defaults as fallback arguments.
-
-    Args:
-        f (callable):
-        debug (bool):
-
-    """
-    _default: dict
-
-    if debug:
-        LOGGER.remove()
-        LOGGER.add(sys.stderr, level="DEBUG")
-
-    _sig = signature(f)
-    LOGGER.debug(f"Function {signature=}")
-
-    _default = {}
-
-    for k, v in _sig.parameters.items():
-        if v.default is not Parameter.empty:
-            _default[k] = v.default
-
-    LOGGER.debug(f"{_default=}")
-    _change_ledger = {
-        k: {"label": "Python Function default", "rank": 0} for k in _default.copy()
-    }
-    return _default, _change_ledger
+__all__ = ["parse_func", "update_from_function"]
 
 
-def update_from_function(
-    threshold_kwargs: dict[str, Any],
-    change_ledger: dict[str, dict[str, str | int]],
-    func_kwargs: dict[str, Any],
-    debug: bool = False,
-) -> tuple[dict, dict]:
-    if debug:
-        LOGGER.remove()
-        LOGGER.add(sys.stderr, level="DEBUG")
+class FuncParser(SourceParser):
+    label: str = "Python Function default"
+    rank: int = 0
 
-    LOGGER.debug(f"{threshold_kwargs=}")
-    LOGGER.debug(f"{func_kwargs=}")
+    def __call__(
+        cls,
+        threshold_kwargs: dict,
+        change_ledger: dict,
+        f: Callable,
+        debug: bool = False,
+    ) -> tuple[dict, dict]:
+        """Lowest level parser - retrieve function defaults as fallback arguments.
 
-    _threshold_kwargs = threshold_kwargs.copy()
+        Args:
+            f (callable):
+            debug (bool):
 
-    threshold_kwargs.update(**func_kwargs)
+        """
+        _default: dict
 
-    for key in func_kwargs:
-        change_ledger[key] = {"label": "developer-provided", "rank": 100}
+        if debug:
+            LOGGER.remove()
+            LOGGER.add(sys.stderr, level="DEBUG")
 
-    return threshold_kwargs, change_ledger
+        _sig = signature(f)
+        LOGGER.debug(f"Function {signature=}")
+
+        _default = {}
+
+        for k, v in _sig.parameters.items():
+            if v.default is not Parameter.empty:
+                _default[k] = v.default
+
+        LOGGER.debug(f"{_default=}")
+        _change_ledger = {k: {"label": cls.label, "rank": 0} for k in _default.copy()}
+        return _default, _change_ledger
+
+
+parse_func = FuncParser()
+
+
+class FuncUpdater(SourceParser):
+    label: str = "developer-provided"
+    rank: int = 100
+
+    def __call__(
+        cls,
+        threshold_kwargs: dict[str, Any],
+        change_ledger: dict[str, dict[str, str | int]],
+        func_kwargs: dict[str, Any],
+        debug: bool = False,
+    ) -> tuple[dict, dict]:
+        if debug:
+            LOGGER.remove()
+            LOGGER.add(sys.stderr, level="DEBUG")
+
+        LOGGER.debug(f"{threshold_kwargs=}")
+        LOGGER.debug(f"{func_kwargs=}")
+
+        threshold_kwargs.update(**func_kwargs)
+
+        for key in func_kwargs:
+            change_ledger[key] = {"label": cls.label, "rank": cls.rank}
+
+        return threshold_kwargs, change_ledger
+
+
+update_from_function = FuncUpdater()

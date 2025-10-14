@@ -7,37 +7,49 @@ from pathlib import Path
 import yaml
 from loguru import logger as LOGGER
 
+from argmerge.base import SourceParser
 
-def parse_yaml(
-    threshold_kwargs: dict[str, str],
-    change_ledger: dict[str, dict[str, str | int]],
-    fpath_yaml: str | Path,
-    debug: bool = False,
-) -> tuple[dict, dict]:
-    _yaml_kwargs: dict
+__all__ = ["parse_yaml"]
 
-    if debug:
-        LOGGER.remove()
-        LOGGER.add(sys.stderr, level="DEBUG")
 
-    LOGGER.debug(f"{threshold_kwargs=}")
-    LOGGER.debug(f"{fpath_yaml=}")
+class YAMLParser(SourceParser):
+    label: str = "YAML"
+    rank: int = 20
 
-    _fpath_yaml = Path(fpath_yaml)
-    if _fpath_yaml.suffix not in (".yml", ".yaml"):
-        raise ValueError(
-            f"The YAML suffix of '{_fpath_yaml.suffix}' is not correct."
-            " Please use '.yml' or '.yaml'."
-        )
+    def __call__(
+        cls,
+        threshold_kwargs: dict[str, str],
+        change_ledger: dict[str, dict[str, str | int]],
+        fpath_yaml: str | Path,
+        debug: bool = False,
+    ) -> tuple[dict, dict]:
+        _yaml_kwargs: dict
 
-    with open(fpath_yaml, "rb") as fy:
-        _yaml_kwargs = yaml.safe_load(fy)
+        if debug:
+            LOGGER.remove()
+            LOGGER.add(sys.stderr, level="DEBUG")
 
-    LOGGER.debug(f"{_yaml_kwargs=}")
-    threshold_kwargs.update(_yaml_kwargs)
-    LOGGER.debug(f"Updated {threshold_kwargs=}")
+        LOGGER.debug(f"{threshold_kwargs=}")
+        LOGGER.debug(f"{fpath_yaml=}")
 
-    for key in _yaml_kwargs:
-        change_ledger[key] = {"label": f"YAML ({_fpath_yaml})", "rank": 20}
+        _fpath_yaml = Path(fpath_yaml)
+        if _fpath_yaml.suffix not in (".yml", ".yaml"):
+            raise ValueError(
+                f"The YAML suffix of '{_fpath_yaml.suffix}' is not correct."
+                " Please use '.yml' or '.yaml'."
+            )
 
-    return threshold_kwargs, change_ledger
+        with open(fpath_yaml, "rb") as fy:
+            _yaml_kwargs = yaml.safe_load(fy)
+
+        LOGGER.debug(f"{_yaml_kwargs=}")
+        threshold_kwargs.update(_yaml_kwargs)
+        LOGGER.debug(f"Updated {threshold_kwargs=}")
+
+        for key in _yaml_kwargs:
+            change_ledger[key] = {"label": cls.label, "rank": cls.rank}
+
+        return threshold_kwargs, change_ledger
+
+
+parse_yaml = YAMLParser()
