@@ -25,15 +25,15 @@ def all_default_params(first: int = 7, second: str = "", third: float = 0.0):
         # if not a callable is passed
         (None, None, None, False, None, None, pytest.raises(TypeError)),
         # if no parameters with defaults are passed
-        (None, None, no_default_params, False, {}, {}, no_error),
+        ({}, {}, no_default_params, False, {}, {}, no_error),
         # if mix of default/not default params are passed
         (
-            None,
-            None,
+            {},
+            {},
             mixed_params,
             True,
             {"third": 0.0},
-            {"third": {"label": "Python Function default", "rank": 0}},
+            {"third": {"label": "Python Function Default", "rank": 0}},
             no_error,
         ),
         # if all functions have defaults
@@ -44,9 +44,9 @@ def all_default_params(first: int = 7, second: str = "", third: float = 0.0):
             True,
             {"first": 7, "second": "", "third": 0.0},
             {
-                "third": {"label": "Python Function default", "rank": 0},
-                "second": {"label": "Python Function default", "rank": 0},
-                "first": {"label": "Python Function default", "rank": 0},
+                "third": {"label": "Python Function Default", "rank": 0},
+                "second": {"label": "Python Function Default", "rank": 0},
+                "first": {"label": "Python Function Default", "rank": 0},
             },
             no_error,
         ),
@@ -80,24 +80,24 @@ def test_parse_func(
             {"first": 1},
             False,
             {"first": 1},
-            {"first": {"label": "developer-provided", "rank": 100}},
+            {"first": {"label": "Developer-provided", "rank": 100}},
             no_error,
         ),
         # one previous change
         (
             {"first": 3},
-            {"first": {"label": "Python Function default", "rank": 0}},
+            {"first": {"label": "Python Function Default", "rank": 0}},
             {"first": 1},
             False,
             {"first": 1},
-            {"first": {"label": "developer-provided", "rank": 100}},
+            {"first": {"label": "Developer-provided", "rank": 100}},
             no_error,
         ),
         # many previous changes from many levels
         (
             {"first": 1, "second": "", "third": 0.0},
             {
-                "first": {"label": "Python Function default", "rank": 0},
+                "first": {"label": "Python Function Default", "rank": 0},
                 "second": {"label": "Environment Variable", "rank": 30},
                 "third": {"label": "CLI", "rank": 40},
             },
@@ -105,9 +105,9 @@ def test_parse_func(
             True,
             {"first": 99, "second": "Ken Thompson", "third": -0.8},
             {
-                "first": {"label": "developer-provided", "rank": 100},
-                "second": {"label": "developer-provided", "rank": 100},
-                "third": {"label": "developer-provided", "rank": 100},
+                "first": {"label": "Developer-provided", "rank": 100},
+                "second": {"label": "Developer-provided", "rank": 100},
+                "third": {"label": "Developer-provided", "rank": 100},
             },
             no_error,
         ),

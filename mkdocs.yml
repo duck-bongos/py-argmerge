@@ -4,7 +4,7 @@ theme:
   name: material
   logo: img/bracket-logo.svg
   palette:
-    primary: cyan
+    primary: deep purple
   features:
     - content.code.copy
     - navigation.instant
@@ -29,6 +29,7 @@ plugins:
             - src
           options:
             separate_signature: true
+
             line_length: 88
             docstring_section_style: list
             docstring_style: google

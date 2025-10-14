@@ -38,6 +38,8 @@ def threshold(
 ):
     """Merge arguments from external environment sources into the program.
 
+    We allow syntax of both @threshold and @threshold(), depending whether you want to
+    allow for defaults or override them.
 
     Args:
         fpath_json (str | Path, optional): The path to find a JSON configuration file.
