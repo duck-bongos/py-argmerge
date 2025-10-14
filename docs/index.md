@@ -42,8 +42,19 @@ def main(first: int, second: str, third: float = 0.0):
     ...
 ```
 
-### API Docs
+## Hierarchy
+We determined the hierarchy based on (our perception of) developer experience. The intent is for higher priority sources to correspond to the quickest sources to change. For example, we perceive changing a CLI argument quicker than changing an environment variable - etc. 
 
 
+| Level | Rank |
+| --- | --- |
+| Developer-provided | 100 |
+| CLI | 40 |
+| Environment Variable | 30 |
+| YAML File | 20 |
+| JSON File | 10 |
+| Python Function Default | 0 |
 
-I have some more words here
+## FAQ
+#### Why YAML over JSON?
+We prioritized YAML above JSON is because we find it significantly easier to read because it has less "line noise". JSON contains copious amounts of brackets (`{`,`}`) and commas. These are the only two sources that can pass dictionaries in by default. Of course, passing in different Regular expressions for environment variables and CLI arguments could also capture dictionaries, if you want to figure that out.

@@ -1,5 +1,5 @@
 # Exaples
-Below, we'll show you how to display the keywords from each source, how to skip using the `threshold` decorator entirely, then walk through examples that build on each other to show how arguments are overwritten.
+Below, we'll show you how to display the keywords from each source, how to bypass using the `threshold` decorator entirely, then walk through examples that build on each other to show how arguments are overwritten.
 
 ## Tracing
 We added the ability to trace the source of each keyword argument. We set this using `threshold`'s kwarg `trace_level`. `trace_level` uses the [`loguru` package for logging](https://github.com/Delgan/loguru) and accepts the following arguments (case insenitive): 
@@ -13,7 +13,7 @@ We added the ability to trace the source of each keyword argument. We set this u
 We will see how this is used by trying out different log levels in the next set of examples.
 
 ## Developer-Provided Arguments (Highest Level)
-If you need to debug something _really_ quickly and don't want to fuss around with files or CLI, you can pass the values in **as keywords**. This overrides any external values provided from files, environment variables, or the CLI.
+If you need to debug something _really_ quickly and don't want to fuss around with files or CLI, you can pass the values in **as keywords**. This bypasses any external values provided from files, environment variables, or the CLI.
 ```py
 # main.py
 from argmerge import threshold
@@ -59,8 +59,6 @@ def main(
 
 if __name__ == "__main__":
     main()
-
-
 ```
 Output
 ```sh
@@ -74,7 +72,7 @@ fourth  | Python Function default
 fifth   | Python Function default
 ```
 
-## JSON
+## JSON (Second Lowest)
 JSON Config
 ```json
 // threshold.json
@@ -115,7 +113,7 @@ second  | JSON (threshold.json)
 ```
 
 
-## YAML
+## YAML (Third Lowest)
 ```yaml
 # threshold.yaml
 third: -3.333
@@ -140,7 +138,6 @@ def main(
 
 if __name__ == "__main__":
     main()
-
 ```
 Output
 ```sh
@@ -154,7 +151,7 @@ second  | JSON (threshold.json)
 third   | YAML (threshold.yaml)  
 ```
 
-## Environment Variables
+## Environment Variables (Third Highest)
 ```sh
 $ export EXAMPLE_THRESH_FOURTH=-14.0
 ```
@@ -181,7 +178,6 @@ def main(
 
 if __name__ == "__main__":
     main()
-
 ```
 Outputs
 ```sh
@@ -194,4 +190,46 @@ second  | JSON (threshold.json)
 third   | YAML (threshold.yaml)  
 fourth  | Environment Variable   
 ```
-## Command-Line Arguments
+
+## Command-Line Arguments (Second Highest)
+
+```py
+# main.py
+from argmerge import threshold
+
+
+@threshold(
+    fpath_json="threshold.json",
+    fpath_yaml="threshold.yaml",
+    env_prefix="EXAMPLE_THRESH",
+    cli_pattern=r"--([A-Za-z\_\-]+)\=([0-9A-Za-z\_\-\.]+)",  # the default pattern
+    trace_level="WARNING",
+)
+def main(
+    first: int,
+    second: str,
+    third: float = 3.0,
+    fourth: float = 4.0,
+    fifth: int = 5,
+):
+    pass
+
+
+if __name__ == "__main__":
+    main()
+```
+
+Output
+```sh
+$ uv run main.py -- --fifth=3.14
+$ # you can also run
+$ # python main.py --fifth=3.14
+2025-10-14 00:07:09.683 | WARNING  | argmerge.trace:_write_trace:27 - 
+Parameter Name  | Location Set         
+=====================================
+first   | JSON (threshold.json)
+second  | JSON (threshold.json)
+third   | YAML (threshold.yaml)
+fourth  | Environment Variable 
+fifth   | CLI      
+```
