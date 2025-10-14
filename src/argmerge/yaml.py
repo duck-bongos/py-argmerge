@@ -13,6 +13,16 @@ __all__ = ["parse_yaml"]
 
 
 class YAMLParser(SourceParser):
+    """The parser the extracts relevant arguments from a YAML file.
+
+    params:
+        label (str): The debugging label to indicate an argument was set in a YAML
+            config file.
+        rank (int): The priority of the parser. Generally, we aim between [0,100] for
+            human-readabilty.
+
+    """
+
     label: str = "YAML"
     rank: int = 20
 
@@ -23,6 +33,22 @@ class YAMLParser(SourceParser):
         fpath_yaml: str | Path,
         debug: bool = False,
     ) -> tuple[dict, dict]:
+        """Parse a YAML configuration file for arguments
+
+         Args:
+            threshold_kwargs (dict[str, Any]): kwargs passed around the
+                @threshold decorator.
+            change_ledger (dict[str, dict[str, str  |  int]]): Tracks when kwargs are
+                updated inside the @threshold decorator.
+            fpath_yaml (str | Path): The filepath to the YAML configuration file.
+            debug (bool, optional): Flag to turn on more logging. Defaults to False.
+
+        Raises:
+            ValueError: If filepath extension is not `yml` or `yaml`.
+
+        Returns:
+            tuple[dict, dict]: an updated `threshold_kwargs` and `change_ledger`.
+        """
         _yaml_kwargs: dict
 
         if debug:

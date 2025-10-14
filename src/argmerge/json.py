@@ -11,6 +11,16 @@ __all__ = ["parse_json"]
 
 
 class JSONParser(SourceParser):
+    """The parser the extracts relevant arguments from a JSON file.
+
+    params:
+        label (str): The debugging label to indicate an argument was set in a JSON
+            config file.
+        rank (int): The priority of the parser. Generally, we aim between [0,100] for
+            human-readabilty.
+
+    """
+
     label: str = "JSON"
     rank: int = 10
 
@@ -21,6 +31,22 @@ class JSONParser(SourceParser):
         fpath_json: str | Path,
         debug: bool = False,
     ) -> tuple[dict, dict]:
+        """Parse a JSON configuration file for arguments
+
+         Args:
+            threshold_kwargs (dict[str, Any]): kwargs passed around the
+                @threshold decorator.
+            change_ledger (dict[str, dict[str, str  |  int]]): Tracks when kwargs are
+                updated inside the @threshold decorator.
+            fpath_json (str | Path): The filepath to the JSON configuration file.
+            debug (bool, optional): Flag to turn on more logging. Defaults to False.
+
+        Raises:
+            ValueError: If filepath extension is not `json`.
+
+        Returns:
+            tuple[dict, dict]: an updated `threshold_kwargs` and `change_ledger`.
+        """
         _json_kwargs: dict
 
         if debug:
