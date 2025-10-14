@@ -1,17 +1,18 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 __all__ = ["SourceParser"]
 
 
 class SourceParser(ABC):
-    rank: int
-    label: str
+    rank: int = -100
+    label: str = ""
 
-    def __init__(self, rank: int, label: str):
-        self.rank = rank
-        self.label = label
+    def __init__(cls):
+        cls.label
+        cls.rank
 
+    @abstractmethod
     def __call__(
         cls, threshold_kwargs: dict, ledger: dict, debug: bool = False, **kwargs
     ):
-        raise NotImplementedError
+        """This is too abstract to be covered"""

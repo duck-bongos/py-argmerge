@@ -39,6 +39,8 @@ class YAMLParser(SourceParser):
                 " Please use '.yml' or '.yaml'."
             )
 
+        cls.label = f"YAML ({_fpath_yaml})"
+
         with open(fpath_yaml, "rb") as fy:
             _yaml_kwargs = yaml.safe_load(fy)
 

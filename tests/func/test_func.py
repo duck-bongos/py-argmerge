@@ -20,14 +20,16 @@ def all_default_params(first: int = 7, second: str = "", third: float = 0.0):
 
 
 @pytest.mark.parametrize(
-    "function, debug,expected_kwargs, expected_ledger, context",
+    "threshold_kwargs, change_ledger,function, debug,expected_kwargs, expected_ledger, context",
     [
         # if not a callable is passed
-        (None, False, None, None, pytest.raises(TypeError)),
+        (None, None, None, False, None, None, pytest.raises(TypeError)),
         # if no parameters with defaults are passed
-        (no_default_params, False, {}, {}, no_error),
+        (None, None, no_default_params, False, {}, {}, no_error),
         # if mix of default/not default params are passed
         (
+            None,
+            None,
             mixed_params,
             True,
             {"third": 0.0},
@@ -36,6 +38,8 @@ def all_default_params(first: int = 7, second: str = "", third: float = 0.0):
         ),
         # if all functions have defaults
         (
+            {},
+            {},
             all_default_params,
             True,
             {"first": 7, "second": "", "third": 0.0},
@@ -48,9 +52,19 @@ def all_default_params(first: int = 7, second: str = "", third: float = 0.0):
         ),
     ],
 )
-def test_parse_func(function, debug, expected_kwargs, expected_ledger, context):
+def test_parse_func(
+    function,
+    debug,
+    threshold_kwargs,
+    change_ledger,
+    expected_kwargs,
+    expected_ledger,
+    context,
+):
     with context:
-        _expected_kwargs, _expected_ledger = parse_func(function, debug)
+        _expected_kwargs, _expected_ledger = parse_func(
+            threshold_kwargs, change_ledger, function, debug
+        )
         assert expected_kwargs == _expected_kwargs
         assert expected_ledger == _expected_ledger
 

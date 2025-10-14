@@ -14,6 +14,9 @@ CLI_PATTERN: re.Pattern = re.compile(r"--([A-Za-z\_\-]+)\=([0-9A-Za-z\_\-\.]+)")
 
 
 class CLIParser(SourceParser):
+    label: str = "CLI"
+    rank: int = 40
+
     def __call__(
         cls,
         threshold_kwargs: dict[str, Any],
