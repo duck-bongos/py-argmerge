@@ -1,4 +1,4 @@
-name: ci 
+name: publish documentation
 on:
   push:
     branches:
@@ -24,5 +24,6 @@ jobs:
           path: ~/.cache 
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material 
-      - run: mkdocs gh-deploy --force
+      - run: |
+          pip install mkdocs-material mkdocs-autoapi mkdocstrings[python] mkdocs-terminal mkdocs-landing
+          mkdocs gh-deploy --force
