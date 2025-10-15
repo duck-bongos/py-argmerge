@@ -1,6 +1,6 @@
 ---
 date:
-  created: 2024-01-01
+  created: 2024-10-15
 ---
 
 # `argmerge`
