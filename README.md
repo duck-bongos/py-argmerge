@@ -6,7 +6,7 @@ _Customize how program defaults and overrides from config files, environment var
 |---|---|
 CI/CD |
 Package | [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/argmerge.svg?logo=python&label=Python&logoColor=gold)](https://pypi.org/project/hatch-vcs/) |
-Meta|[![types - Mypy](https://img.shields.io/badge/types-Mypy-blue.svg)]
+Meta|![types - Mypy](https://img.shields.io/badge/types-Mypy-blue.svg)
 
 
 ![](https://raw.githubusercontent.com/duck-bongos/py-argmerge/ee26d70afb01489a43741ff9f88347b3ada3c25a/docs/img/argmerge.svg)
