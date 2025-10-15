@@ -1,11 +1,22 @@
 [project]
 name = "argmerge"
-description = "Add your description here"
+description = "Merge arguments from outside your program before they reach your program."
 readme = "README.md"
 authors = [
     { name = "duck-bongos", email = "billmannd@gmail.com" }
 ]
 requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
 dependencies = [
     "loguru>=0.7.3",
     "mkdocs-material>=9.6.21",
