@@ -7,7 +7,9 @@ _Customize how program defaults and overrides from config files, environment var
 CI/CD |
 Package | [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/argmerge.svg?logo=python&label=Python&logoColor=gold)](https://pypi.org/project/hatch-vcs/) |
 Meta|[![types - Mypy](https://img.shields.io/badge/types-Mypy-blue.svg)]
-![](./img/argmerge.svg)
+
+![](https://raw.githubusercontent.com/duck-bongos/argmerge/main/docs/img/argmerge.svg)
+![](/img/argmerge.svg)
 
 We retrieve each possible source of program arguments as Python dictionaries and then perform dictionary updates between each source before passing the final dictionary to the wrapped function. Effectively:
 ```py
