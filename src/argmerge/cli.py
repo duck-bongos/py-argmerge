@@ -2,7 +2,7 @@
 
 
 ```py
-CLI_PATTERN: re.Pattern = re.compile(r"--([A-Za-z_-]+)=([0-9A-Za-z_-\.]+)")
+CLI_PATTERN: re.Pattern = re.compile(r"--([A-Za-z_-]+)=([0-9A-Za-z._-]+)")
 ```
 
 - matches `'--arg=value'`
@@ -21,7 +21,7 @@ __all__ = ["CLI_PATTERN", "parse_cli"]
 
 # matches '--arg=value'
 # does not match '--arg value'
-CLI_PATTERN: re.Pattern = re.compile(r'--([A-Za-z_-]+)=([0-9A-Za-z._-]+)')
+CLI_PATTERN: re.Pattern = re.compile(r"--([A-Za-z_-]+)=([0-9A-Za-z._-]+)")
 
 
 class CLIParser(SourceParser):
