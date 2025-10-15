@@ -8,7 +8,8 @@ CI/CD |
 Package | [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/argmerge.svg?logo=python&label=Python&logoColor=gold)](https://pypi.org/project/hatch-vcs/) |
 Meta|[![types - Mypy](https://img.shields.io/badge/types-Mypy-blue.svg)]
 
-![](https://raw.githubusercontent.com/duck-bongos/py-argmerge/blob/main/docs/img/argmerge.svg)
+
+![](https://raw.githubusercontent.com/duck-bongos/py-argmerge/ee26d70afb01489a43741ff9f88347b3ada3c25a/docs/img/argmerge.svg?token=ACNJDP7NXPOUCQO47Z6TYQTI56KYW)
 ![](/img/argmerge.svg)
 
 We retrieve each possible source of program arguments as Python dictionaries and then perform dictionary updates between each source before passing the final dictionary to the wrapped function. Effectively:
