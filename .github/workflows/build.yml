@@ -3,7 +3,7 @@ name: build
 on:
   push:
     tags:
-    - *
+    - '*'
 
 concurrency:
   group: build-${{ github.head_ref }}
