@@ -1,6 +1,6 @@
 [project]
 name = "argmerge"
-description = "Add your description here"
+description = "Merge arguments from outside your program before they reach your program."
 readme = "README.md"
 authors = [
     { name = "duck-bongos", email = "billmannd@gmail.com" }
