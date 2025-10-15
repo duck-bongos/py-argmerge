@@ -202,7 +202,7 @@ from argmerge import threshold
     fpath_json="threshold.json",
     fpath_yaml="threshold.yaml",
     env_prefix="EXAMPLE_THRESH",
-    cli_pattern=r"--([A-Za-z\_\-]+)\=([0-9A-Za-z\_\-\.]+)",  # the default pattern
+    cli_pattern=r"--([A-Za-z_-]+)=([0-9A-Za-z_-\.]+)",  # the default pattern
     trace_level="WARNING",
 )
 def main(

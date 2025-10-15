@@ -3,15 +3,18 @@ theme:
   favicon: img/bracket-logo.svg
   name: material
   logo: img/bracket-logo.svg
-  palette:
-    primary: deep purple
-  
   features:
     - content.code.copy
     - navigation.instant
+  palette:
+    scheme: argmerge
+extra_css:
+  - stylesheets/extra.css
+
 nav:
   - Home: index.md
-  - Examples: examples.md
+  - How-To Guides: examples.md
+  
 plugins:
   - search
   - mkdocs-autoapi:

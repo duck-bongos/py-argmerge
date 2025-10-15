@@ -9,12 +9,12 @@ class SourceParser(ABC):
     """The base parser from which all other parsers are built.
 
     To build a new parser, you will need to subclass this one. Set 'rank' and 'label'
-    as class variables and overwrite '__call__' with your parser. You MUST include
+    as class variables and overwrite `__call__` with your parser. You MUST include
     three parameters: `threshold_kwargs`, `ledger`, and `debug`. This will allow you
     to add your own with other keyword arguments. You can look at any of the existing
     subclasses for how this works. After you build your subclass, you will instantiate
-    it, setting it equal to a variable, ideally beginning with 'parse_'. This will
-    allow you to treat it like a function by invoking the __call__ method, which calls
+    it, setting it equal to a variable, ideally beginning with `'parse_'`. This will
+    allow you to treat it like a function by invoking the `__call__` method, which calls
     your parser.
 
     Args:

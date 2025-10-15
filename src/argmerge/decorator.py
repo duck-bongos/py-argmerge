@@ -12,6 +12,7 @@ Usage:
     if __name__ == '__main__':
         main()
     ```
+    Many more examples of how to use this can be found in [the Examples section](/examples/)
 """
 
 import functools
