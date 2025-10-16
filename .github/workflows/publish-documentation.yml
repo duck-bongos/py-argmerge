@@ -26,4 +26,5 @@ jobs:
             mkdocs-material-
       - run: |
           pip install mkdocs-material mkdocs-autoapi mkdocstrings[python] mkdocs-terminal mkdocs-landing
+          mkdocs build
           mkdocs gh-deploy --force
