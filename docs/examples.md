@@ -21,22 +21,37 @@ from argmerge import threshold
 
 @threshold(trace_level="DEBUG")
 def main(first, second, third: float = 3.0, fourth: float = 4.0, fifth: int = 5):
-    pass
+    print(
+        f"{first=}",
+        f"{second=}",
+        f"{third=}",
+        f"{fourth=}",
+        f"{fifth=}",
+        sep="\n",
+    )
 
 
 if __name__ == "__main__":
     main(first=1, second="second")
+
 ```
 Outputs a list of keyword arguments with their sources listed in ascending priority order
 ```sh
 $ uv run main.py
-Parameter Name  | Location Set           
+2025-10-15 21:08:02.681 | DEBUG    | argmerge.trace:_write_trace:51 - 
+Parameter Name  | Source                 
 =======================================
-third   | Python Function default
-fourth  | Python Function default
-fifth   | Python Function default
-first   | developer-provided     
-second  | developer-provided
+third   | Python Function Default
+fourth  | Python Function Default
+fifth   | Python Function Default
+first   | Developer-provided     
+second  | Developer-provided     
+=======================================
+first=1
+second='second'
+third=3.0
+fourth=4.0
+fifth=5
 ```
 
 
@@ -54,7 +69,14 @@ def main(
     fourth: float = 4.0,
     fifth: int = 5,
 ):
-    pass
+    print(
+        f"{first=}",
+        f"{second=}",
+        f"{third=}",
+        f"{fourth=}",
+        f"{fifth=}",
+        sep="\n",
+    )
 
 
 if __name__ == "__main__":
@@ -62,14 +84,21 @@ if __name__ == "__main__":
 ```
 Output
 ```sh
-2025-10-13 23:58:14.901 | DEBUG    | argmerge.trace:_write_trace:27 - 
-Parameter Name  | Location Set           
+$ uv run main.py
+2025-10-15 21:19:07.874 | DEBUG    | argmerge.trace:_write_trace:51 - 
+Parameter Name  | Source                 
 =======================================
-first   | Python Function default
-second  | Python Function default
-third   | Python Function default
-fourth  | Python Function default
-fifth   | Python Function default
+first   | Python Function Default
+second  | Python Function Default
+third   | Python Function Default
+fourth  | Python Function Default
+fifth   | Python Function Default
+=======================================
+first=1
+second='second'
+third=3.0
+fourth=4.0
+fifth=5
 ```
 
 ## JSON (Second Lowest)
@@ -94,7 +123,14 @@ def main(
     fourth: float = 4.0,
     fifth: int = 5,
 ):
-    pass
+    print(
+        f"{first=}",
+        f"{second=}",
+        f"{third=}",
+        f"{fourth=}",
+        f"{fifth=}",
+        sep="\n",
+    )
 
 
 if __name__ == "__main__":
@@ -102,14 +138,21 @@ if __name__ == "__main__":
 ```
 Outputs
 ```sh
-2025-10-13 23:59:54.057 | DEBUG    | argmerge.trace:_write_trace:27 - 
-Parameter Name  | Location Set           
+$ uv run main.py
+2025-10-15 21:19:36.388 | DEBUG    | argmerge.trace:_write_trace:51 - 
+Parameter Name  | Source                 
 =======================================
-third   | Python Function default
-fourth  | Python Function default
-fifth   | Python Function default
+third   | Python Function Default
+fourth  | Python Function Default
+fifth   | Python Function Default
 first   | JSON (threshold.json)  
 second  | JSON (threshold.json)  
+=======================================
+first=100
+second='Python'
+third=3.0
+fourth=4.0
+fifth=5 
 ```
 
 
@@ -124,7 +167,9 @@ from argmerge import threshold
 
 
 @threshold(
-    fpath_json="threshold.json", fpath_yaml="threshold.yaml", trace_level="DEBUG"
+    fpath_json="threshold.json", 
+    fpath_yaml="threshold.yaml", 
+    trace_level="DEBUG"
 )
 def main(
     first: int,
@@ -133,7 +178,14 @@ def main(
     fourth: float = 4.0,
     fifth: int = 5,
 ):
-    pass
+    print(
+        f"{first=}",
+        f"{second=}",
+        f"{third=}",
+        f"{fourth=}",
+        f"{fifth=}",
+        sep="\n",
+    )
 
 
 if __name__ == "__main__":
@@ -141,14 +193,21 @@ if __name__ == "__main__":
 ```
 Output
 ```sh
-2025-10-14 00:02:32.892 | DEBUG    | argmerge.trace:_write_trace:27 - 
-Parameter Name  | Location Set           
+$ uv run main.py
+2025-10-15 21:24:21.619 | DEBUG    | argmerge.trace:_write_trace:51 - 
+Parameter Name  | Source                 
 =======================================
-fourth  | Python Function default
-fifth   | Python Function default
+fourth  | Python Function Default
+fifth   | Python Function Default
 first   | JSON (threshold.json)  
 second  | JSON (threshold.json)  
 third   | YAML (threshold.yaml)  
+=======================================
+first=100
+second='Python'
+third=-3.333
+fourth=4.0
+fifth=5
 ```
 
 ## Environment Variables (Third Highest)
@@ -173,7 +232,14 @@ def main(
     fourth: float = 4.0,
     fifth: int = 5,
 ):
-    pass
+    print(
+        f"{first=}",
+        f"{second=}",
+        f"{third=}",
+        f"{fourth=}",
+        f"{fifth=}",
+        sep="\n",
+    )
 
 
 if __name__ == "__main__":
@@ -181,14 +247,21 @@ if __name__ == "__main__":
 ```
 Outputs
 ```sh
-2025-10-14 00:05:26.171 | WARNING  | argmerge.trace:_write_trace:27 - 
-Parameter Name  | Location Set           
+$ uv run main.py
+2025-10-15 21:26:37.188 | DEBUG    | argmerge.trace:_write_trace:51 - 
+Parameter Name  | Source                 
 =======================================
-fifth   | Python Function default
+fifth   | Python Function Default
 first   | JSON (threshold.json)  
 second  | JSON (threshold.json)  
 third   | YAML (threshold.yaml)  
 fourth  | Environment Variable   
+=======================================
+first=100
+second='Python'
+third=-3.333
+fourth=-14.0
+fifth=5 
 ```
 
 ## Command-Line Arguments (Second Highest)
@@ -202,7 +275,7 @@ from argmerge import threshold
     fpath_json="threshold.json",
     fpath_yaml="threshold.yaml",
     env_prefix="EXAMPLE_THRESH",
-    cli_pattern=r"--([A-Za-z_-]+)=([0-9A-Za-z_-\.]+)",  # the default pattern
+    cli_pattern=r"--([A-Za-z_-]+)=([0-9A-Za-z._-]+)",  # the default pattern
     trace_level="WARNING",
 )
 def main(
@@ -212,7 +285,14 @@ def main(
     fourth: float = 4.0,
     fifth: int = 5,
 ):
-    pass
+    print(
+        f"{first=}",
+        f"{second=}",
+        f"{third=}",
+        f"{fourth=}",
+        f"{fifth=}",
+        sep="\n",
+    )
 
 
 if __name__ == "__main__":
@@ -224,12 +304,18 @@ Output
 $ uv run main.py -- --fifth=3.14
 $ # you can also run
 $ # python main.py --fifth=3.14
-2025-10-14 00:07:09.683 | WARNING  | argmerge.trace:_write_trace:27 - 
-Parameter Name  | Location Set         
+2025-10-15 21:28:51.405 | DEBUG    | argmerge.trace:_write_trace:51 - 
+Parameter Name  | Source               
 =====================================
 first   | JSON (threshold.json)
 second  | JSON (threshold.json)
 third   | YAML (threshold.yaml)
 fourth  | Environment Variable 
-fifth   | CLI      
+fifth   | CLI                  
+=====================================
+first=100
+second='Python'
+third=-3.333
+fourth=-14.0
+fifth='3.14'   
 ```
