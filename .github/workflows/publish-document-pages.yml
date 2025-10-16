@@ -25,5 +25,6 @@ jobs:
           restore-keys: |
             mkdocs-material-
       - run: |
-          pip install mkdocs mkdocs-material mkdocs-autoapi mkdocstrings[python] mkdocs-terminal mkdocs-landing
+          pip install mkdocs-material mkdocs-autoapi mkdocstrings[python] mkdocs-terminal mkdocs-landing
+          mkdocs build
           mkdocs gh-deploy --force
