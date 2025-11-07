@@ -11,7 +11,7 @@ theme:
 extra_css:
   - stylesheets/extra.css
 
-site_url: https://duck-bongos.github.io/py-argmerge/
+site_url: https://dan-codes-badly/py-argmerge/
 
 nav:
   - Home: index.md
