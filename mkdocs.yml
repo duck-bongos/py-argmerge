@@ -12,6 +12,10 @@ extra_css:
   - stylesheets/extra.css
 
 site_url: https://dan-codes-badly/py-argmerge/
+use_directory_urls: true
+
+extra:
+  base_path: /py-argmerge/
 
 nav:
   - Home: index.md
