@@ -11,7 +11,7 @@ theme:
 extra_css:
   - stylesheets/extra.css
 
-site_url: https://dan-codes-badly/py-argmerge/
+site_url: https://dan-codes-badly.com/py-argmerge/
 use_directory_urls: true
 
 extra:
